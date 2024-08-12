@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viviana's Nail Glam - Amsterdam</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #FF69B4;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .container {
+            flex: 1;
+            padding: 20px;
+        }
+        h2 {
+            color: #FF69B4;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        .location, .socials, .services, .contact {
+            margin-bottom: 20px;
+        }
+        a {
+            color: #FF69B4;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .contact-address {
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .review-container {
+            margin-bottom: 50px; /* Zorg voor voldoende ruimte voor de knop en footer */
+        }
+        .review {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        #loadMoreBtn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+        #loadMoreBtn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: auto; /* Zorgt ervoor dat de footer altijd onderaan blijft */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Nails Amsterdam🩷</h1>
+        <p>📍 𝒜𝓂𝓈𝓉𝑒𝓇𝒹𝒶𝓂 𝒲𝑒𝓈𝓉</p>
+    </header>
+
+    <div class="container">
+        <div class="location">
+            <h2>Onze Locatie</h2>
+            <p>📍 <strong>𝓑𝓮𝓪𝓾𝓉𝓎 𝓈𝒶𝓁𝑜𝓃 𝑜𝓃𝑒 𝓂𝒶𝑔𝒾𝒸 𝓅𝑜𝒾𝓃𝓉</strong></p>
+            <p class="contact-address">Houtrijkstraat 340a, Amsterdam, Netherlands 1013 DX</p>
+        </div>
+
+        <div class="socials">
+            <h2>Volg ons</h2>
+            <p>Bekijk meer op TikTok: <a href="https://www.tiktok.com/@vivianasnailglam_" target="_blank">www.tiktok.com/@vivianasnailglam_</a></p>
+        </div>
+
+        <div class="services">
+            <h2>Onze Diensten</h2>
+            <p>• 𝑀𝒶𝓃𝒾𝒸𝓊𝓇𝑒, 𝓅𝑒𝒹𝒾𝒸𝓊𝓇𝑒, 𝓃𝒶𝒾𝓁 𝑒𝓍𝓉𝑒𝓃𝓈, 𝒶𝓃𝒹 𝑔𝑒𝓁𝓁𝒶𝓀</p>
+            <p>• 𝟤 𝑜𝓌𝓃𝑒𝓇𝓈</p>
+        </div>
+
+        <div class="media">
+            <h2>Galerij</h2>
+            <img src="Salon.jpg" alt="Salon" />
+            <img src="glitter 1.jpg" alt="Glitter nagels 1" />
+            <img src="roze nagel foto 1.jpg" alt="Roze nagels foto 1" />
+            <img src="roze nagel foto 2.jpg" alt="Roze nagels foto 2" />
+            <img src="roze nagel foto 3.jpg" alt="Roze nagels foto 3" />
+            <img src="video foto.jpg" alt="Nagel video thumbnail" />
+            <video controls>
+                <source src="video 1.mp4" type="video/mp4">
+                Je browser ondersteunt geen video afspelen.
+            </video>
+        </div>
+
+        <div class="contact">
+            <h2>Contact</h2>
+            <p>Neem contact met ons op via WhatsApp, Treatwell, of bezoek ons op het onderstaande adres:</p>
+            <p class="contact-address">Houtrijkstraat 340a, Amsterdam, Netherlands 1013 DX</p>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nail lengths</th>
+                    <th>Prijs</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>XS</td><td>€20</td></tr>
+                <tr><td>S</td><td>€30</td></tr>
+                <tr><td>M/L</td><td>€40</td></tr>
+                <tr><td>XL</td><td>€50</td></tr>
+            </tbody>
+        </table>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Service's</th>
+                    <th>Prijs</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Manicure</td><td>€25</td></tr>
+                <tr><td>Nail extensions refill</td><td>€30</td></tr>
+                <tr><td>Shellack</td><td>€30</td></tr>
+                <tr><td>Biab</td><td>€35</td></tr>
+            </tbody>
+        </table>
+
+        <div class="review-container">
+            <h2>Reviews</h2>
+            <div id="reviews">
+                <!-- Reviews worden hier geladen -->
+            </div>
+            <button id="loadMoreBtn">Toon meer reviews</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Viviana's Nail Glam - Amsterdam</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const reviewsContainer = document.getElementById('reviews');
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            const allReviews = [
+                {name: "Alina", date: "17 dagen geleden", text: "Had a great experience! Erika took her time to gently remove the gellak I had from a previous salon, gave a great shape to my nails and the final colour was just what I was looking for.", treatment: "Gellak manicure"},
+                {name: "Christina", date: "19 dagen geleden", text: "Vriendelijk en oog voor detail.", treatment: "Gellak pedicure"},
+                {name: "Shannon", date: "ongeveer 1 maand geleden", text: "Vriendelijke, vakkundige dame. Overzichtelijke salon. Ik had een pedicure en gellac. Het is heel mooi geworden.", treatment: "Gellak pedicure"},
+                {name: "Elsbeth", date: "ongeveer 2 maanden geleden", text: "Heel tevreden.", treatment: "Gellak pedicure"},
+                {name: "Haruna", date: "ongeveer 2 maanden geleden", text: "Erika made my nails beautiful again!", treatment: "Gellak manicure"},
+                {name: "Rosa", date: "2 maanden geleden", text: "Erika levert echt goed werk, supermooie en stevige nagels die niet afbrokkelen. Blijft zitten voor weken. Erika is super aardig en vriendelijk!", treatment: "Nagelversteviging"},
+                {name: "Diana", date: "2 maanden geleden", text: "Erika was very flexible and helpful. She also made great recommendations for future treatments and how to keep my nails healthy 😌", treatment: "Nagelverlengingen"},
+                {name: "Anja", date: "2 maanden geleden", text: "Normaliter ga ik hooguit een keer per jaar voor een pedicure. Nu heb ik Erica gevonden en ben ik in korte tijd al voor de tweede keer geweest. Kopje koffie erbij en mijn voeten heerlijk laten verzorgen.", treatment: "Pedicure"},
+                {name: "Haruna", date: "3 maanden geleden", text: "Amazing skills and great personality!", treatment: "Gellak pedicure"},
+                {name: "Olga", date: "3 maanden geleden", text: "Mijn nagels zijn prima gelakt, met gel lak, Erica is een aardige vrouw en weet wat ze doet!", treatment: "Gellak manicure"},
+                {name: "Ingrid", date: "3 maanden geleden", text: "Ik heb bij Erika een hele prettige en pijnloze pedicurebehandeling gehad. Ze heeft zachte handen en ze is daarbij ook nog erg aardig. Ik heb met mooie voeten de salon weer verlaten!", treatment: "Gellak pedicure"},
+                {name: "Olga", date: "3 maanden geleden", text: "Erica was hartelijk en gezellig. Deskundig en ook flexibel. Ik was voor het eerst bij haar, en ik ga terugkomen.", treatment: "Pedicure"},
+                {name: "Manuela", date: "3 maanden geleden", text: "Lovely as usual.", treatment: "Gellak manicure"},
+                {name: "Enya", date: "4 maanden geleden", text: "Zoals gewoonlijk ontzettend fijne sfeer en prachtige nagels.", treatment: "Nagelversteviging"},
+                {name: "Rosa", date: "4 maanden geleden", text: "Professionele behandeling en hele aardige specialiste. Erika gebruikt geen elektrische vijl die je nagels kapotmaakt, maar werkt heel secuur en ze is super vriendelijk. Dankjewel, ik kom gauw terug!", treatment: "Nagelversteviging"},
+                {name: "Manuela", date: "4 maanden geleden", text: "As always I am very happy with the work done by Erika!", treatment: "Gellak manicure"},
+                {name: "Rosa", date: "4 maanden geleden", text: "Erika is heel gezellig én kundig. Ze is erg nauwkeurig.", treatment: "Nagelversteviging"},
+                {name: "Enya", date: "4 maanden geleden", text: "Hele fijne sfeer ik kom zeker terug :)", treatment: "Gellak manicure"},
+                {name: "Izzy", date: "5 maanden geleden", text: "Always a treat 😄", treatment: "Gellak manicure"},
+                {name: "Laura", date: "6 maanden geleden", text: "Erika is professional and good.", treatment: "Pedicure"},
+                {name: "Roos", date: "6 maanden geleden", text: "Super mooie pedicure gehad, kom hier zeker terug.", treatment: "Gellak pedicure"},
+                {name: "Izzy", date: "7 maanden geleden", text: "Erika did fantastic Christmas nails for me.", treatment: "Gellak manicure"},
+                {name: "Riia", date: "8 maanden geleden", text: "Erika did a great job with my nails, just before Christmas!", treatment: "Gellak manicure"}
+            ];
+
+            let visibleReviews = 2; // Begin met het tonen van 2 reviews
+
+            function loadReviews() {
+                reviewsContainer.innerHTML = '';
+                for (let i = 0; i < visibleReviews; i++) {
+                    if (i >= allReviews.length) break;
+                    const review = allReviews[i];
+                    const reviewElement = document.createElement('div');
+                    reviewElement.classList.add('review');
+                    reviewElement.innerHTML = `<strong>${review.name}</strong><p>${review.text}</p>`;
+                    reviewsContainer.appendChild(reviewElement);
+                }
+                if (visibleReviews >= allReviews.length) {
+                    loadMoreBtn.style.display = 'none';
+                }
+            }
+
+            loadMoreBtn.addEventListener('click', () => {
+                visibleReviews += 2;
+                loadReviews();
+            });
+
+            // Initiale reviews laden
+            loadReviews();
+        });
+    </script>
+</body>
+</html>
