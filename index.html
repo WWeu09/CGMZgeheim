@@ -1,1 +1,316 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viviana's Nail Glam - Amsterdam</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Algemene body-stijlen */
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        /* Header */
+        header {
+            background-color: #FF69B4;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+        }
+        
+        /* Menu Knop */
+        #menuButton {
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 3;
+        }
+        
+        /* Container voor de inhoud */
+        .container {
+            flex: 1;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            color: #FF69B4;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75em;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            margin: 10px 0;
+            line-height: 1.8;
+        }
+        
+        a {
+            color: #FF69B4;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .location, .socials, .services, .contact, .collaboration, .salon-rules, .reviews {
+            margin-bottom: 40px;
+        }
+        
+        .contact-address {
+            font-size: 1.15em;
+            font-weight: bold;
+        }
+        
+        /* Tabel voor diensten */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+            background-color: #fff;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            font-family: 'Lato', sans-serif;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        
+        /* Reviews sectie */
+        .review {
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1em;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Side Menu */
+        #sideMenu {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+        
+        #sideMenu a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 22px;
+            color: #fff;
+            display: block;
+            transition: 0.3s;
+        }
+        
+        #sideMenu a:hover {
+            color: #FF69B4;
+        }
+        
+        #sideMenu .closeBtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+            color: #fff;
+        }
+
+        /* Dropdown styles */
+        .dropdown-btn {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 22px;
+            color: #fff;
+            display: block;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            transition: 0.3s;
+        }
+        
+        .dropdown-container {
+            display: none;
+            background-color: #262626;
+            padding-left: 15px;
+        }
+        
+        .dropdown-btn .fa-caret-down {
+            float: right;
+            padding-right: 8px;
+        }
+        
+        /* Media Query voor kleine schermen */
+        @media screen and (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu Knop -->
+    <span id="menuButton" onclick="openMenu()">&#9776;</span>
+
+    <!-- Side Menu -->
+    <div id="sideMenu" class="side-menu">
+        <a href="javascript:void(0)" class="closeBtn" onclick="closeMenu()">&times;</a>
+        <a href="#location">Onze Locatie</a>
+        <a href="#socials">Volg ons</a>
+        <a href="#services">Onze Diensten</a>
+        <a href="#contact">Contact</a>
+        <button class="dropdown-btn">Meer Info 
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="#collaboration">Samenwerking</a>
+            <a href="#salon-rules">Salonregels</a>
+            <a href="#reviews">Reviews</a>
+        </div>
+    </div>
+
+    <header>
+        <h1>Viviana's Nail Glam 🩷</h1>
+        <p>📍 𝒜𝓂𝓈𝓉𝑒𝓇𝒹𝒶𝓂 𝒲𝑒𝓈𝓉</p>
+    </header>
+
+    <div class="container">
+        <section id="location" class="location">
+            <h2>Onze Locatie</h2>
+            <p>📍 <strong>𝓑𝓮𝒶𝓊𝓉𝓎 𝑜𝓃𝑒 𝓂𝒶𝑔𝒾𝒸 𝓅𝑜𝒾𝓃𝓉</strong></p>
+            <p class="contact-address">Houtrijkstraat 340a, Amsterdam, Netherlands 1013 DX</p>
+            <address>
+                <a href="https://www.google.com/maps/dir//Houtrijkstraat+340a,+1013+DX+Amsterdam" target="_blank">Bekijk ons adres op Google Maps</a>
+            </address>
+        </section>
+
+        <section id="socials" class="socials">
+            <h2>Volg ons</h2>
+            <p>Bekijk meer op TikTok: <a href="https://www.tiktok.com/@vivianasnailglam_" target="_blank">@vivianasnailglam_</a></p>
+            <p>Bekijk meer op Instagram: <a href="https://www.instagram.com/vivianasnailglam" target="_blank">@vivianasnailglam</a></p>
+            <p>Stuur ons een bericht op WhatsApp: <a href="https://wa.me/message/LPETM4C43XDWE1" target="_blank">WhatsApp Chat</a></p>
+            <p>Bekijk onze Treatwell pagina: <a href="https://www.treatwell.nl/" target="_blank">Treatwell</a></p>
+        </section>
+
+        <section id="services" class="services">
+            <h2>Onze Diensten</h2>
+            <p>Bij Viviana's Nail Glam bieden wij een breed scala aan behandelingen voor jouw nagels, waaronder:</p>
+            <ul>
+                <li><strong>Gellak Handen Pakket</strong>: Voor een prachtige, langdurige gellak manicure.</li>
+                <li><strong>Gellak Pakket</strong>: Voor een complete gellak behandeling.</li>
+                <li><strong>Gellak - Verwijderen</strong>: Verwijdering van oude gellak.</li>
+                <li><strong>Nagelreparatie - Per nagel</strong>: Voor herstel van beschadigde nagels.</li>
+                <li><strong>Nagels Lakken - Handen</strong>: Voor een mooie lakbehandeling van de handen.</li>
+            </ul>
+            <p>Onze salon was in 2023 uitgeroepen tot Top Rated met een beoordeling van 4,9 sterren op basis van 138 reviews!</p>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>Contact</h2>
+            <p>📧 E-mail: <a href="mailto:vivianaglamnail@gmail.com">vivianaglamnail@gmail.com</a></p>
+        </section>
+
+        <section id="collaboration" class="collaboration">
+            <h2>Samenwerking</h2>
+            <p>Heb je interesse in een samenwerking met ons? Neem dan contact met ons op via e-mail of WhatsApp.</p>
+        </section>
+
+        <section id="salon-rules" class="salon-rules">
+            <h2>Salonregels</h2>
+            <p>We werken met strikte hygiëne en kwaliteitseisen om jouw ervaring zo goed mogelijk te maken. We vragen je om op tijd te komen en eventuele annuleringen tijdig door te geven.</p>
+        </section>
+
+        <section id="reviews" class="reviews">
+            <h2>Reviews</h2>
+            <div class="review">
+                <p><strong>Review 1:</strong> "Zeer tevreden met mijn nieuwe nagels! Het personeel is ontzettend vriendelijk en professioneel."</p>
+            </div>
+            <div class="review">
+                <p><strong>Review 2:</strong> "Altijd een geweldige ervaring bij Viviana's Nail Glam. Mijn favoriete plek in Amsterdam!"</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Viviana's Nail Glam - Alle rechten voorbehouden</p>
+    </footer>
+
+    <script>
+        function openMenu() {
+            document.getElementById("sideMenu").style.width = "250px";
+        }
+
+        function closeMenu() {
+            document.getElementById("sideMenu").style.width = "0";
+        }
+
+        /* Dropdown script */
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        for (var i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
 
