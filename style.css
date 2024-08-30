@@ -1,0 +1,443 @@
+/* Basisinstellingen */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Header */
+.header {
+    background-color: #ff69b4;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+/* Navigatiebalk */
+.nav {
+    display: flex;
+    justify-content: center;
+    background-color: #f8f8f8;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav a {
+    margin: 0 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.nav a:hover {
+    color: #ff69b4;
+}
+
+/* Hero Sectie */
+.hero {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.swiper-pagination {
+    bottom: 10px !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #ff69b4;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.swiper-button-next {
+    right: 10px;
+}
+
+.swiper-button-prev {
+    left: 10px;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    color: #c71585;
+}
+
+/* Loader */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.loader .circles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader .circle1, .loader .circle2, .loader .circle3 {
+    width: 15px;
+    height: 15px;
+    margin: 0 10px;
+    border-radius: 50%;
+    background: #ff69b4;
+    animation: bounce 1.4s infinite ease-in-out;
+}
+
+.loader .circle2 {
+    animation-delay: -0.32s;
+}
+
+.loader .circle3 {
+    animation-delay: -0.64s;
+}
+
+@keyframes bounce {
+    0%, 80%, 100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+    }
+}
+
+/* Call-to-Action */
+.call-to-action {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.call-to-action button {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.call-to-action button:hover {
+    background-color: #c71585;
+}
+
+/* Secties */
+.section {
+    margin: 40px 20px;
+}
+
+.section h2, .section h1, .section h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #ff69b4;
+}
+
+.section p {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Specifieke stijlen voor de links binnen de Afspraak Maken sectie */
+#afspraak a {
+    display: inline-block;
+    margin-right: 15px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+#afspraak a:hover {
+    color: #ff69b4;
+}
+
+/* Footer */
+.footer {
+    background-color: #ff69b4;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+}
+
+.footer a:hover {
+    color: #ffffff;
+}
+
+.footer .social-media {
+    margin: 10px 0;
+}
+
+.footer .social-media a {
+    margin: 0 10px;
+    font-size: 20px;
+}
+
+.footer .social-media a:hover {
+    color: #ffffff;
+}
+
+/* Google Maps */
+#map {
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+}
+
+/* Prijstabel */
+.price-table {
+    width: 100%;
+    max-width: 1000px;
+    margin: 40px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    background-color: #fff;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+.price-table:hover {
+    transform: scale(1.02);
+}
+
+.price-table th,
+.price-table td {
+    border: 1px solid #ff69b4;
+    padding: 15px;
+    text-align: center;
+}
+
+.price-table th {
+    background-color: #ffb6c1;
+    color: #333;
+}
+
+.price-table tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+.price-table tr:hover {
+    background-color: #ffebf0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Boekingsbeleid */
+.booking-policy-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+}
+
+.booking-policy-content.open {
+    max-height: 500px;
+}
+
+.booking-policy-button {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: block; /* Zorgt ervoor dat de knop als een blok wordt weergegeven */
+    margin: 0 auto; /* Centreert de knop horizontaal */
+}
+
+.booking-policy-button:hover {
+    background-color: #c71585;
+}
+
+
+/* Algemene Voorwaarden */
+.btn, #toggleTerms, #closeTerms {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: opacity 0.5s ease-out;
+    display: inline-block;
+}
+
+.btn:hover, #toggleTerms:hover, #closeTerms:hover {
+    background-color: #c71585;
+}
+
+#toggleTerms, #closeTerms {
+    display: block;
+    margin: 20px auto;
+}
+
+#scroll-target {
+    position: absolute;
+    top: -100px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.terms-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+    opacity: 0;
+}
+
+.terms-content.open {
+    max-height: 1500px;
+    opacity: 1;
+}
+
+.close-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.5s ease-out;
+    display: none;
+}
+
+.terms-content.open .close-button {
+    display: block;
+}
+
+.close-icon {
+    stroke-dasharray: 40 121;
+    stroke-dashoffset: 0;
+}
+
+.close-button svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Stijlen voor de iframe in de Afspraak Maken sectie */
+#iframe-container {
+    max-width: 100%;
+    margin: 20px auto;
+}
+
+#iframe-container iframe {
+    width: 100%;
+    height: 700px;
+    border: none;
+}
+
+/* Stijlen voor de links in de Afspraak Maken sectie */
+#afspraak a {
+    display: block;
+    margin: 10px 0;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+#afspraak a:hover {
+    color: #ff69b4;
+}
+
+/* Stijl voor fieldset */
+fieldset {
+    background-color: #ffebf0;
+    border: 2px solid #ff69b4;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+fieldset:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Basisstijl voor de link */
+p a {
+    display: inline-block;
+    background-color: #fff;
+    color: #ff69b4;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+p a:hover {
+    background-color: #ff69b4;
+    color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+}
+
+/* Media Queries voor kleinere schermen */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
