@@ -28,6 +28,12 @@
             object-fit: cover;
             z-index: -1;
         }
+        /* Verberg de video op kleine schermen */
+        @media (max-width: 768px) {
+            .background-video {
+                display: none;
+            }
+        }
         .container {
             text-align: center;
             background-color: rgba(255, 255, 255, 0.9);
