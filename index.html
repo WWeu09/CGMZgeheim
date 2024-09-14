@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="nl">
-<head>
+<html lang="nl"><head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,20 +7,39 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #343a40;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #e9ecef;
-            color: #343a40;
+            height: 100vh; /* Zorgt ervoor dat de body de volledige hoogte van het scherm beslaat */
+            overflow: hidden; /* Voorkomt dat er een scrollbalk verschijnt */
+            position: relative; /* Nodig voor de positionering van de achtergrondvideo */
+        }
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        /* Verberg de video op kleine schermen */
+        @media (max-width: 768px) {
+            .background-video {
+                display: none;
+            }
         }
         .container {
             text-align: center;
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            z-index: 1;
         }
         h1 {
             font-size: 28px;
@@ -72,21 +89,13 @@
         .social-media a:hover {
             color: #0056b3;
         }
-        .footer {
-            margin-top: 30px;
-            font-size: 12px;
-            color: #6c757d;
-        }
-        .footer a {
-            text-decoration: none;
-            color: #007bff;
-        }
-        .footer a:hover {
-            color: #0056b3;
-        }
     </style>
 </head>
 <body>
+    <video class="background-video" autoplay="" muted="" loop="">
+        <source src="videologo1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
     <div class="container">
         <h1>Welkom bij Viviana's Nail Glam</h1>
         <p>𝙡𝙖𝙣𝙙𝙞𝙣𝙜𝙨𝙥𝙖𝙜𝙞𝙣𝙖</p>
@@ -95,17 +104,15 @@
         <button class="button web-button" onclick="window.location.href='index.html1.html'">Web Versie</button>
         <div class="info">
             <p>U wordt doorverwezen naar de juiste versie van de website van Viviana's Nail Glam, afhankelijk van uw apparaat. Beide versies bieden dezelfde content, maar zijn geoptimaliseerd voor verschillende schermgroottes.</p>
-            <p>Neem contact met ons op via <a href="mailto:Ambex.NL@outlook.com">Ambex.NL@outlook.com</a> voor vragen of hulp.</p>
-            <p>Als de website niet werkt, neem dan contact op met de technische ondersteuning via <a href="mailto:Ambex.NL@outlook.com">Ambex.NL@outlook.com</a>.</p>
+            <p>Neem contact met ons op via <a href="mailto:vivianasnailglam@gmail.com">vivianasnailglam@gmail.com</a> voor vragen of hulp.</p>
+            <p>Als de website niet werkt, neem dan contact op met de technische ondersteuning via <a href="mailto:ambex.info@gmail.com">ambex.info@gmail.com</a>.</p>
         </div>
         <div class="social-media">
             <a href="https://www.instagram.com/vivianasnailglam/" target="_blank">Instagram</a>
             <a href="https://www.tiktok.com/@vivianasnailglam_" target="_blank">Tiktok</a>
             <a href="https://linktr.ee/VivianasNailGlam" target="_blank">Al onze platforms</a>
         </div>
-        <div class="footer">
-            <p>Website volledig gemaakt door <a href="https://ambex.nl" target="_blank">Ambex</a>.</p>
-        </div>
     </div>
-</body>
-</html>
+
+
+</body></html>
