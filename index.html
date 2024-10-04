@@ -1,118 +1,669 @@
-<html lang="nl"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kies een Versie - Viviana's Nail Glam</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Prismatikai</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            color: #343a40;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* Zorgt ervoor dat de body de volledige hoogte van het scherm beslaat */
-            overflow: hidden; /* Voorkomt dat er een scrollbalk verschijnt */
-            position: relative; /* Nodig voor de positionering van de achtergrondvideo */
+            box-sizing: border-box;
         }
-        .background-video {
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: url('Save time.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            text-align: center; /* Centreert alle tekst in de body */
+        }
+    
+        body::before {
             position: absolute;
-            top: 0;
-            left: 0;
+            width: min(1400px, 90vw);
+            top: 10%;
+            left: 50%;
+            height: 90%;
+            transform: translateX(-50%);
+            content: '';
+            background-image: url(images/bg.png);
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: top center;
+            pointer-events: none;
+        }
+    
+        @import url('https://fonts.cdnfonts.com/css/ica-rubrik-black');
+        @import url('https://fonts.cdnfonts.com/css/poppins');
+    
+        .banner {
+            width: 100%;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .banner .slider {
+            position: absolute;
+            width: 200px;
+            height: 250px;
+            top: 10%;
+            left: calc(50% - 100px);
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            animation: autoRun 20s linear infinite;
+            z-index: 2;
+        }
+        @keyframes autoRun {
+            from {
+                transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+            }
+            to {
+                transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+            }
+        }
+    
+        .banner .slider .item {
+            position: absolute;
+            inset: 0;
+            transform: 
+                rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+                translateZ(550px);
+        }
+        .banner .slider .item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            z-index: -1;
         }
-        /* Verberg de video op kleine schermen */
-        @media (max-width: 768px) {
-            .background-video {
-                display: none;
-            }
-        }
-        .container {
-            text-align: center;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 90%;
+        .banner .content {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(1400px, 100vw);
+            height: max-content;
+            padding-bottom: 100px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
             z-index: 1;
         }
+        .banner .content h1 {
+            font-family: 'ICA Rubrik';
+            font-size: 16em;
+            line-height: 1em;
+            color: #25283B;
+            position: relative;
+        }
+        .banner .content h1::after {
+            position: absolute;
+            inset: 0;
+            content: attr(data-content);
+            z-index: 2;
+            -webkit-text-stroke: 2px #d2d2d2;
+            color: transparent;
+        }
+        .banner .content .author {
+            font-family: Poppins;
+            text-align: right;
+            max-width: 200px;
+        }
+        .banner .content h2 {
+            font-size: 3em;
+        }
+        .banner .content .model {
+            background-image: url(images/model.png);
+            width: 100%;
+            height: 75vh;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-size: auto 130%;
+            background-repeat: no-repeat;
+            background-position: top center;
+            z-index: 1;
+        }
+        @media screen and (max-width: 1023px) {
+            .banner .slider {
+                width: 160px;
+                height: 200px;
+                left: calc(50% - 80px);
+            }
+            .banner .slider .item {
+                transform: 
+                    rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+                    translateZ(300px);
+            }
+            .banner .content h1 {
+                text-align: center;
+                width: 100%;
+                text-shadow: 0 10px 20px #000;
+                font-size: 7em;
+            }
+            .banner .content .author {
+                color: #fff;
+                padding: 20px;
+                text-shadow: 0 10px 20px #000;
+                z-index: 2;
+                max-width: unset;
+                width: 100%;
+                text-align: center;
+                padding: 0 30px;
+            }
+        }
+        @media screen and (max-width: 767px) {
+            .banner .slider {
+                width: 100px;
+                height: 150px;
+                left: calc(50% - 50px);
+            }
+            .banner .slider .item {
+                transform: 
+                    rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+                    translateZ(180px);
+            }
+            .banner .content h1 {
+                font-size: 5em;
+            }
+        }
         h1 {
-            font-size: 28px;
-            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 2.5rem;
+            color: #cbd5e1;
+            margin-bottom: 1rem;
+            text-align: center;
         }
-        p {
-            font-size: 16px;
-            margin-bottom: 30px;
-            color: #6c757d;
+    
+        .home-button {
+            position: fixed; /* Zorgt ervoor dat de knop meescrollt */
+            top: 20px; /* Zet de knop 20px van de bovenkant van de pagina */
+            right: 20px; /* Zet de knop 20px van de rechterkant van de pagina */
+            padding: 10px 20px; /* Zorgt voor wat opvulling binnen de knop */
+            background-color: #6a0dad; /* Paars als achtergrondkleur */
+            color: #fff; /* Witte tekstkleur */
+            font-size: 1rem; /* Maak de tekst wat groter */
+            font-weight: bold; /* Maakt de tekst vetgedrukt */
+            border: none; /* Verwijdert standaard knopranden */
+            border-radius: 5px; /* Maakt de randen van de knop wat afgerond */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Geeft de knop een subtiele schaduw */
+            cursor: pointer; /* Verandert de muisaanwijzer naar een handje */
+            transition: background-color 0.3s ease; /* Zorgt voor een mooie overgangseffect als je over de knop hovert */
         }
-        .button {
-            padding: 12px 25px;
-            margin: 10px;
-            font-size: 16px;
-            cursor: pointer;
+    
+        .home-button:hover {
+            background-color: #4b0082; /* Verandert de kleur naar een donkerdere tint paars als je eroverheen hovert */
+        }
+    
+        .home-button:active {
+            background-color: #38006b; /* Nóg een donkerdere tint wanneer de knop actief is */
+        }
+    
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input, textarea, select {
+            margin: 10px 0;
+            padding: 10px;
+            width: 300px;
+            max-width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
             border: none;
             border-radius: 4px;
-            transition: background-color 0.3s ease;
+            cursor: pointer;
         }
-        .web-button {
-            background-color: #ff69b4;
+        input[type="submit"]:hover {
+            background-color: #45a049;
         }
-        .web-button:hover {
-            background-color: #df0d0d;
+        label {
+            font-weight: bold;
         }
-        .mobile-button {
-            background-color: #ff69b4;
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 20px;
         }
-        .mobile-button:hover {
-            background-color: #16c258;
+        footer {
+            background-color: #25283B; /* Donker paars/blauw voor een subtiele maar zichtbare achtergrond */
+            color: #f8fafc; /* Lichte tekstkleur (wit) voor goede leesbaarheid */
+            padding: 20px 0; /* Extra ruimte boven en onder de tekst */
+            text-align: center; /* Centreert de tekst */
+            font-size: 1.2rem; /* Iets grotere tekst voor duidelijkheid */
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1); /* Subtiele schaduw om de footer los te maken van de rest van de pagina */
         }
-        .info {
-            margin-top: 20px;
-            font-size: 14px;
-            color: #495057;
+    
+        footer a {
+            color: #6a0dad; /* Paars voor de links */
+            font-weight: bold; /* Maakt de links vetgedrukt */
+            text-decoration: none; /* Verwijdert de standaard onderstreping van links */
+            transition: color 0.3s ease; /* Maakt een mooie overgang wanneer de kleur verandert */
         }
-        .social-media {
-            margin-top: 20px;
+    
+        footer a:hover {
+            color: #4b0082; /* Donkerdere tint paars bij hover */
         }
-        .social-media a {
-            text-decoration: none;
-            color: #007bff;
-            margin: 0 10px;
-            font-size: 16px;
-            transition: color 0.3s ease;
+    
+        footer p {
+            margin: 10px 0; /* Zorgt ervoor dat de alinea's in de footer goed uit elkaar staan */
         }
-        .social-media a:hover {
-            color: #0056b3;
-        }
+    
+    /* Popup form styles */
+.form-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+    background-color: #f9f9f9; /* Lichtgrijze achtergrondkleur voor de popup */
+    padding: 20px;
+    max-width: 90%; /* Responsief: Max breedte voor mobiel */
+    max-height: 80vh; /* Max hoogte van 80% van het scherm */
+    overflow-y: auto; /* Zorgt ervoor dat het venster kan scrollen */
+    border-radius: 10px; /* Ronde hoeken voor de popup */
+}
+
+/* Form container binnen de popup */
+.form-container {
+    background: url('Save time.png') no-repeat center center fixed;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+.form-popup h1 {
+    margin-bottom: 15px;
+}
+
+.form-popup .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.form-popup .cancel {
+    background-color: red;
+}
+
+.form-popup .btn:hover {
+    opacity: 1;
+}
+
+/* Stijl voor de popup-tekst */
+.popup-content {
+    color: black; /* Zwarte tekstkleur */
+}
+
+
+/* Stijl voor de popup-tekst */
+.form-popup h1 {
+    color: #2c3e50; /* Kleur voor de titel (h1) */
+}
+
+.form-popup p, .form-popup li {
+    color: #34495e; /* Kleur voor paragrafen en lijstitems */
+}
+
+.form-popup ol {
+    color: #34495e; /* Kleur voor de genummerde lijst */
+}
+
+/* Knoppen kleur (indien gewenst) */
+.form-popup .btn {
+    background-color: #04AA6D; /* Knopkleur */
+    color: white; /* Tekstkleur van de knop */
+}
+
+.form-popup .cancel {
+    background-color: red; /* Kleur voor de annuleerknop */
+}
+
+
     </style>
+    
+
 </head>
 <body>
-    <video class="background-video" autoplay="" muted="" loop="">
-        <source src="videologo1.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <a href="#top" class="home-button" onclick="scrollToSection('home'); return false;">Home</a>
+
+<h1>Welkom  bij  <span class="author">Prismatikai</span></h1>
+
+    <div class="banner">
+        <div class="slider" style="--quantity: 10">
+            <div class="item" style="--position: 1"><img src="try it today.png" alt="Image 1"></div>
+            <div class="item" style="--position: 2"><img src="2.png" alt="Minimal Effort Required"></div>
+            <div class="item" style="--position: 3"><img src="AUTOMATE YOUR BUSINESS.png" alt="Image 2"></div>
+            <div class="item" style="--position: 4"><img src="chat pic3.png" alt="Learn Now"></div>
+            <div class="item" style="--position: 5"><img src="everyhting the bot.png" alt="Automate Your Business"></div>
+            <div class="item" style="--position: 6"><img src="Prismatik.png" alt="Helvetica World"></div>
+            <div class="item" style="--position: 7"><img src="Helvetica World.png" alt="Chat Pic 3"></div>
+            <div class="item" style="--position: 8"><img src="learn now.png" alt="Foto 1 Logo Naam"></div>
+            <div class="item" style="--position: 9"><img src="Minimal effort requiered.png" alt="Everything the Bot"></div>
+            <div class="item" style="--position: 10"><img src="www.reallygreatsite.com.png" alt="RISMATIK Logo"></div>
+        </div>
+        <div class="content">
+            <h1 data-content="Prismatikai">
+                Prismatikai
+            </h1>
+            <div class="author">
+                
+            </div>
+
+            </div>
+            <div class="model"></div>
+        </div>
+    </div>
+    <header>
+        <h1>Welkom bij Prismatikai</h1>
+    </header>
+    
     <div class="container">
-        <h1>Welkom bij Viviana's Nail Glam</h1>
-        <p>𝙡𝙖𝙣𝙙𝙞𝙣𝙜𝙨𝙥𝙖𝙜𝙞𝙣𝙖</p>
-        <p>Gebruik je een telefoon? Klik op <strong>Mobiele Versie</strong>. Gebruik je een laptop of computer? Klik dan op <strong>Web Versie</strong>.</p>
-        <button class="button mobile-button" onclick="window.location.href='mobil.html'">Mobiele Versie</button>
-        <button class="button web-button" onclick="window.location.href='index.html1.html'">Web Versie</button>
-        <div class="info">
-            <p>U wordt doorverwezen naar de juiste versie van de website van Viviana's Nail Glam, afhankelijk van uw apparaat. Beide versies bieden dezelfde content, maar zijn geoptimaliseerd voor verschillende schermgroottes.</p>
-            <p>Neem contact met ons op via <a href="mailto:vivianasnailglam@gmail.com">vivianasnailglam@gmail.com</a> voor vragen of hulp.</p>
-            <p>Als de website niet werkt, neem dan contact op met de technische ondersteuning via <a href="mailto:ambex.info@gmail.com">ambex.info@gmail.com</a>.</p>
+        <section class="content">
+            <h2>Welkom bij Prismatik</h2>
+            <p>De toekomst van klantinteractie met onze geavanceerde AI-chatbots.</p>
+            <p>Bekijk onze demonstratie voor meer informatie.</p>
+            
+            <h3>Ontdek de Kracht van Prismatik Chatbots</h3>
+            <p>In een wereld waar klantinteractie essentieel is, biedt Prismatik de oplossing die je nodig hebt om voorop te blijven. Onze geavanceerde chatbots transformeren de manier waarop bedrijven communiceren met hun klanten door efficiënte, 24/7 ondersteuning te bieden zonder de noodzaak van menselijke tussenkomst.</p>
+
+            <h3>Waarom Kiezen voor Prismatik Chatbots?</h3>
+            <ul>
+                <li><strong>Altijd Beschikbaar:</strong> Onze chatbots zijn er altijd voor je klanten, dag en nacht. Of het nu gaat om vragen, ondersteuning of sales, ze staan klaar om te helpen wanneer het jou uitkomt.</li>
+                <li><strong>Personalisatie op Maat:</strong> Wij begrijpen dat elke onderneming uniek is. Daarom ontwerpen wij chatbots die zijn afgestemd op jouw specifieke behoeften en die naadloos aansluiten bij jouw merkstem en -identiteit.</li>
+                <li><strong>Efficiëntie en Kostenbesparing:</strong> Verlaag je operationele kosten en verhoog de efficiëntie door routinematige taken en veelgestelde vragen automatisch af te handelen. Laat je medewerkers zich richten op strategische taken terwijl onze chatbots de basiscommunicatie voor hun rekening nemen.</li>
+                <li><strong>Naadloze Integratie:</strong> Onze chatbots kunnen eenvoudig worden geïntegreerd met jouw bestaande systemen en platforms, zodat je een vloeiende ervaring biedt zonder dat je processen hoeven te veranderen.</li>
+                <li><strong>Data en Inzichten:</strong> Ontvang waardevolle inzichten en rapportages over klantinteracties en gedragingen. Dit stelt je in staat om jouw strategieën te verfijnen en je klantenservice te verbeteren.</li>
+            </ul>
+
+            <h3>Maak de Sprong naar de Toekomst</h3>
+            <p>Klaar om jouw klantinteracties te revolutioneren en je bedrijf naar een hoger niveau te tillen? Ontdek hoe Prismatik jouw perfecte partner kan zijn voor klantgerichte AI-oplossingen.</p>
+        </section>
+
+        <div class="form-container">
+            <form action="mailto:Prismatikai@outlook.com" method="post" enctype="text/plain">
+                <h3>Aanmeldformulier</h3>
+                
+                <label for="name">Naam:</label>
+                <input type="text" id="name" name="name" placeholder="Wat is je naam?" required>
+
+                <label for="company">Bedrijf:</label>
+                <input type="text" id="company" name="company" placeholder="Wat is je bedrijf?" required>
+
+                <label for="email">E-mailadres:</label>
+                <input type="email" id="email" name="email" placeholder="Wat is je e-mailadres?" required>
+
+                <label for="phone">Telefoonnummer:</label>
+                <input type="tel" id="phone" name="phone" placeholder="Wat is je telefoonnummer?" required>
+
+                <label for="message">Bericht:</label>
+                <textarea id="message" name="message" rows="4" placeholder="Algemene informatie" required></textarea>
+
+                <label>Hoe heb je van ons gehoord?</label>
+                <div class="checkbox-group">
+                    <input type="radio" id="search-engine" name="referral" value="Zoekmachine" required>
+                    <label for="search-engine">Zoekmachine</label>
+
+                    <input type="radio" id="social-media" name="referral" value="Sociale Media" required>
+                    <label for="social-media">Sociale Media</label>
+
+                    <input type="radio" id="recommendation" name="referral" value="Aanbeveling" required>
+                    <label for="recommendation">Aanbeveling</label>
+
+                    <input type="radio" id="other" name="referral" value="Anders" required>
+                    <label for="other">Anders:</label>
+                    <input type="text" name="other-referral" placeholder="Specificeer">
+                </div>
+
+                <label for="demo">Ik wil een demonstratie aanvragen:</label>
+                <input type="checkbox" id="demo" name="demo" value="Ja" checked>
+
+                <input type="submit" value="Verstuur">
+            </form>
+
+            <p>Bekijk onze demonstratie voor meer informatie!</p>
+            <p>Door dit formulier in te vullen, stem je in met onze privacyverklaring en de manier waarop we jouw gegevens zullen gebruiken.</p>
+
+
+            <footer>
+              
+                
+                <p><a href="#" onclick="openPrivacyPolicy()">Bekijk ons Privacybeleid</a></p>
+                <p><a href="#" onclick="openForm()">Bekijk onze Algemene Voorwaarden</a></p>
+                <footer>
+                </footer>
+                </div>
+                </div>
+                
+                <!-- Privacybeleid Popup -->
+                <div class="form-popup" id="myPrivacyPolicy">
+                    <h1>Privacybeleid Prismatik</h1>
+                    <p>Bij Prismatik nemen we jouw privacy en de bescherming van jouw persoonlijke gegevens zeer serieus. Dit privacybeleid legt uit welke informatie we verzamelen, hoe we die gebruiken, en welke rechten je hebt met betrekking tot jouw gegevens.</p>
+                    
+                    <ol>
+                        <li>Wie we zijn
+                            <p>Prismatik is een platform dat geavanceerde AI-chatbots biedt voor bedrijven om hun klantinteracties te verbeteren. Ons kantoor is gevestigd in [Adres]. Voor vragen over dit beleid kun je contact met ons opnemen via [contact@prismatik.com].</p>
+                        </li>
+                        <li>Welke gegevens we verzamelen
+                            <ul>
+                                <li>Identificatiegegevens: zoals jouw naam, bedrijfsnaam, e-mailadres en telefoonnummer.</li>
+                                <li>Gebruik van de website: gegevens over jouw interacties met onze website, zoals je IP-adres, browsergegevens en de pagina’s die je bezoekt.</li>
+                                <li>Informatie die je zelf verstrekt: zoals formulieren die je invult op onze website (bijv. aanmeldings- of contactformulieren).</li>
+                                <li>Cookies: voor meer informatie, zie onze Cookieverklaring.</li>
+                            </ul>
+                        </li>
+                        <li>Hoe we jouw gegevens gebruiken
+                            <ul>
+                                <li>Om onze diensten te leveren.</li>
+                                <li>Communicatie: We kunnen contact met je opnemen via e-mail of telefoon.</li>
+                                <li>Verbetering van onze diensten: Door het analyseren van gebruikersgedrag.</li>
+                                <li>Marketing: Met jouw toestemming kunnen we je marketingmateriaal sturen.</li>
+                            </ul>
+                        </li>
+                        <li>Met wie we jouw gegevens delen
+                            <ul>
+                                <li>Dienstverleners: We delen gegevens met externe dienstverleners.</li>
+                                <li>Wettelijke verplichtingen: We kunnen gegevens openbaar maken als dit wettelijk vereist is.</li>
+                                <li>Met jouw toestemming: We delen gegevens alleen met jouw expliciete toestemming.</li>
+                            </ul>
+                        </li>
+                        <li>Hoe we jouw gegevens beschermen
+                            <ul>
+                                <li>Gebruik van encryptie voor gevoelige gegevens.</li>
+                                <li>Beperkte toegang tot persoonsgegevens.</li>
+                                <li>Regelmatige veiligheidsaudits en updates van onze systemen.</li>
+                            </ul>
+                        </li>
+                        <li>Hoe lang we jouw gegevens bewaren
+                            <p>We bewaren jouw persoonsgegevens alleen zo lang als nodig is voor de doeleinden waarvoor we ze hebben verzameld.</p>
+                        </li>
+                        <li>Jouw rechten
+                            <ul>
+                                <li>Recht op inzage: Je kunt vragen welke gegevens we van je hebben.</li>
+                                <li>Recht op correctie: Vraag ons om gegevens te corrigeren.</li>
+                                <li>Recht op verwijdering: Vraag ons om jouw gegevens te verwijderen.</li>
+                                <li>Recht op bezwaar: Maak bezwaar tegen het gebruik van jouw gegevens.</li>
+                                <li>Recht op dataportabiliteit: Ontvang een kopie van jouw gegevens.</li>
+                            </ul>
+                        </li>
+                        <li>Cookies en tracking
+                            <p>Onze website maakt gebruik van cookies en vergelijkbare technologieën. Voor meer informatie, zie onze Cookieverklaring.</p>
+                        </li>
+                        <li>Wijzigingen in het privacybeleid
+                            <p>Prismatik behoudt zich het recht voor om dit privacybeleid te wijzigen. Wijzigingen worden op deze pagina geplaatst.</p>
+                        </li>
+                        <li>Contact opnemen
+                            <p>Voor vragen of verzoeken, kun je contact met ons opnemen via:</p>
+                            <ul>
+                                <li>E-mailadres: [contact@prismatik.com]</li>
+                                <li>Adres: [Adres van Prismatik]</li>
+                            </ul>
+                        </li>
+                    </ol>
+                
+                    <button type="button" class="btn cancel" onclick="closePrivacyPolicy()">Sluit</button>
+                </div>
+                
+
+            </footer>
         </div>
-        <div class="social-media">
-            <a href="https://www.instagram.com/vivianasnailglam/" target="_blank">Instagram</a>
-            <a href="https://www.tiktok.com/@vivianasnailglam_" target="_blank">Tiktok</a>
-            <a href="https://linktr.ee/VivianasNailGlam" target="_blank">Al onze platforms</a>
-        </div>
+    </div>
+     <!-- Algemene Voorwaarden Popup -->
+     <div class="form-popup" id="myForm">
+        <h1>Algemene Voorwaarden Prismatik</h1>
+        <p>Welkom bij Prismatik, een platform dat geavanceerde AI-chatbotoplossingen biedt. Door gebruik te maken van onze website en diensten, stem je in met de volgende algemene voorwaarden.</p>
+        <ol>
+            <li>Definities
+                <ul>
+                    <li>Prismatik: de eigenaar van de website en aanbieder van AI-chatbotdiensten.</li>
+                    <li>Gebruiker: een persoon of bedrijf dat gebruikmaakt van de diensten van Prismatik.</li>
+                    <li>Diensten: de AI-chatbotoplossingen en alle andere producten of services aangeboden door Prismatik.</li>
+                </ul>
+            </li>
+
+            <li>Toepasselijkheid
+                <ul>
+                    <li>Deze algemene voorwaarden zijn van toepassing op alle aanbiedingen, overeenkomsten en leveringen van diensten door Prismatik, tenzij schriftelijk anders is overeengekomen.</li>
+                    <li>Door gebruik te maken van de website en diensten van Prismatik, gaat de gebruiker akkoord met deze algemene voorwaarden.</li>
+                </ul>
+            </li>
+
+            <li>Gebruik van de Dienst
+                <ul>
+                    <li>Gebruikers moeten zich registreren om toegang te krijgen tot bepaalde functies van Prismatik. Bij registratie verklaart de gebruiker correcte en actuele informatie te verstrekken.</li>
+                    <li>Gebruikers zijn verantwoordelijk voor het vertrouwelijk houden van hun accountgegevens en wachtwoorden.</li>
+                    <li>Prismatik behoudt zich het recht voor om zonder voorafgaande kennisgeving de dienst te wijzigen, op te schorten of te beëindigen.</li>
+                </ul>
+            </li>
+
+            <li>Gegevensbescherming en Privacy
+                <ul>
+                    <li>Prismatik verwerkt persoonsgegevens in overeenstemming met de Privacyverklaring.</li>
+                    <li>Door gebruik te maken van de diensten van Prismatik stemt de gebruiker in met de verwerking van zijn/haar gegevens zoals beschreven in de privacyverklaring.</li>
+                    <li>Gebruikers kunnen te allen tijde hun gegevens opvragen, corrigeren of verwijderen volgens de voorwaarden van de privacyverklaring.</li>
+                </ul>
+            </li>
+
+            <li>Verantwoordelijkheden van de Gebruiker
+                <ul>
+                    <li>Gebruikers mogen de diensten van Prismatik niet gebruiken voor illegale, onwettige of frauduleuze doeleinden.</li>
+                    <li>Het is de gebruiker verboden om de diensten te gebruiken op een manier die Prismatik of derden schade kan berokkenen.</li>
+                    <li>Gebruikers mogen geen inbreuk maken op intellectuele eigendomsrechten van Prismatik of derden.</li>
+                </ul>
+            </li>
+
+            <li>Betaling en Abonnementen
+                <ul>
+                    <li>Voor bepaalde diensten van Prismatik kan een vergoeding vereist zijn. De prijzen en betalingsvoorwaarden worden duidelijk gecommuniceerd voordat de gebruiker zich abonneert op een dienst.</li>
+                    <li>Abonnementen worden automatisch verlengd tenzij anders aangegeven door de gebruiker. Annuleringen kunnen op elk moment plaatsvinden, met inachtneming van de opzegtermijn vermeld in de overeenkomst.</li>
+                </ul>
+            </li>
+
+            <li>Aansprakelijkheid
+                <ul>
+                    <li>Prismatik is niet aansprakelijk voor enige schade die voortvloeit uit het gebruik van de diensten, tenzij de schade is veroorzaakt door opzet of grove nalatigheid van Prismatik.</li>
+                    <li>Prismatik geeft geen garanties met betrekking tot de beschikbaarheid, nauwkeurigheid of betrouwbaarheid van de diensten.</li>
+                    <li>Gebruikers zijn verantwoordelijk voor schade die wordt veroorzaakt door onjuist gebruik van de dienst.</li>
+                </ul>
+            </li>
+
+            <li>Intellectueel Eigendom
+                <ul>
+                    <li>Alle intellectuele eigendomsrechten met betrekking tot de diensten, inclusief maar niet beperkt tot auteursrechten, handelsmerken en software, blijven eigendom van Prismatik of haar licentiegevers.</li>
+                    <li>Gebruikers krijgen een niet-exclusieve, niet-overdraagbare licentie om de diensten te gebruiken in overeenstemming met deze algemene voorwaarden.</li>
+                </ul>
+            </li>
+
+            <li>Wijzigingen aan de Algemene Voorwaarden
+                <ul>
+                    <li>Prismatik behoudt zich het recht voor om deze algemene voorwaarden te allen tijde te wijzigen. Gebruikers zullen op de hoogte worden gesteld van wijzigingen via de website of e-mail.</li>
+                    <li>Door de dienst te blijven gebruiken na de bekendmaking van wijzigingen, stemt de gebruiker in met de gewijzigde voorwaarden.</li>
+                </ul>
+            </li>
+
+            <li>Toepasselijk Recht
+                <ul>
+                    <li>Op deze algemene voorwaarden is het Nederlands recht van toepassing.</li>
+                    <li>Alle geschillen die voortvloeien uit of verband houden met deze algemene voorwaarden zullen worden voorgelegd aan de bevoegde rechtbank in Nederland.</li>
+                </ul>
+            </li>
+        </ol>
+        <button type="button" class="btn cancel" onclick="closeForm()">Sluit</button>
     </div>
 
 
-</body></html>
+</footer>
+</div>
+</div>
+
+</section>
+</section>
+<br>
+
+<div>
+<footer>
+    <div class="social-media-links">
+        <a href="https://www.facebook.com/people/Prismatik/61566408536987/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" style="width: 30px; margin: 0 10px;">
+        </a>
+        <a href="https://www.instagram.com/prismatikofficial/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width: 30px; margin: 0 10px;">
+        </a>
+        <a href="https://www.youtube.com/channel/UC1Gf5ezfop8wLp-SlIHuG7w" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube" style="width: 30px; margin: 0 10px;">
+        </a>
+        <a href="https://api.whatsapp.com/send/?phone=31626472332&text&type=phone_number&app_absent=0" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 30px; margin: 0 10px;">
+        </a>
+    </div>
+    <p>&copy; 2024 Prismatik. Alle rechten voorbehouden.</p>
+
+
+    
+</footer>
+</div>
+
+<script>
+    // Functies voor het openen en sluiten van de Algemene Voorwaarden Popup
+    function openPrivacyPolicy() {
+        document.getElementById("myPrivacyPolicy").style.display = "block";
+    }
+    
+    function closePrivacyPolicy() {
+        document.getElementById("myPrivacyPolicy").style.display = "none"; // Sluit de popup
+    }
+
+    // Functies voor het openen en sluiten van het aanvraagformulier
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+    
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+</script>
+
+
+
+</body>
+</html>
+
