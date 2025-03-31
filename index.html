@@ -1,0 +1,2268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viviana's Nail Glam | Premium Nail Salon</title>
+  <meta name="description" content="Experience luxury nail care at Viviana's Nail Glam. Book your appointment today for premium nail services in a stylish, elegant environment.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Base Styles */
+    :root {
+      --background: #ffffff;
+      --foreground: #0f0f10;
+      --card: #ffffff;
+      --card-foreground: #0f0f10;
+      --popover: #ffffff;
+      --popover-foreground: #0f0f10;
+      --primary: #fce7ec;
+      --primary-foreground: #9e1c45;
+      --secondary: #ffe0a3;
+      --secondary-foreground: #1a1a1c;
+      --muted: #f4f4f5;
+      --muted-foreground: #71717a;
+      --accent: #ffe0a3;
+      --accent-foreground: #1a1a1c;
+      --destructive: #ef4444;
+      --destructive-foreground: #fafafa;
+      --border: #e4e4e7;
+      --input: #e4e4e7;
+      --ring: #fce7ec;
+      --radius: 0.5rem;
+    }
+
+    .dark {
+      --background: #0f0f10;
+      --foreground: #fafafa;
+      --card: #0f0f10;
+      --card-foreground: #fafafa;
+      --popover: #0f0f10;
+      --popover-foreground: #fafafa;
+      --primary: #9e1c45;
+      --primary-foreground: #fafafa;
+      --secondary: #a16207;
+      --secondary-foreground: #fafafa;
+      --muted: #27272a;
+      --muted-foreground: #a1a1aa;
+      --accent: #a16207;
+      --accent-foreground: #fafafa;
+      --destructive: #7f1d1d;
+      --destructive-foreground: #fafafa;
+      --border: #27272a;
+      --input: #27272a;
+      --ring: #9e1c45;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--background);
+      color: var(--foreground);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Layout */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .flex-col {
+      flex-direction: column;
+    }
+
+    .items-center {
+      align-items: center;
+    }
+
+    .justify-between {
+      justify-content: space-between;
+    }
+
+    .justify-center {
+      justify-content: center;
+    }
+
+    .flex-1 {
+      flex: 1;
+    }
+
+    .grid {
+      display: grid;
+    }
+
+    .gap-4 {
+      gap: 1rem;
+    }
+
+    .gap-8 {
+      gap: 2rem;
+    }
+
+    .gap-12 {
+      gap: 3rem;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      transition: all 0.3s;
+      padding: 1rem 0;
+    }
+
+    header.scrolled {
+      background-color: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      padding: 0.5rem 0;
+    }
+
+    .dark header.scrolled {
+      background-color: rgba(15, 15, 16, 0.9);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary-foreground);
+    }
+
+    .logo span {
+      color: var(--secondary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-link {
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.3s;
+      color: var(--muted-foreground);
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--primary-foreground);
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--foreground);
+    }
+
+    .mobile-menu {
+      display: none;
+      padding: 1rem 0;
+      border-top: 1px solid var(--border);
+      background-color: var(--background);
+    }
+
+    .mobile-menu .nav-link {
+      display: block;
+      padding: 0.5rem 0;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius);
+      font-weight: 500;
+      transition: all 0.3s;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--primary-foreground);
+    }
+
+    .btn-primary:hover {
+      background-color: rgba(252, 231, 236, 0.9);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--muted);
+    }
+
+    .btn-lg {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+    }
+
+    .btn-icon {
+      padding: 0.5rem;
+    }
+
+    .btn-full {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-image: url('https://placehold.co/1920x1080');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 32rem;
+      padding: 2rem 3rem;
+      border-radius: var(--radius);
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .hero-gradient {
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+    }
+
+    .dark .hero-gradient {
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: var(--primary-foreground);
+    }
+
+    .hero-title span {
+      color: var(--secondary);
+    }
+
+    .hero-description {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      color: var(--foreground);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    /* Cards */
+    .card {
+      background-color: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+
+    .card:hover {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .card-image {
+      position: relative;
+      height: 16rem;
+      overflow: hidden;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .card:hover .card-image img {
+      transform: scale(1.05);
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-description {
+      color: var(--muted-foreground);
+      margin-bottom: 1rem;
+    }
+
+    .card-price {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--primary-foreground);
+    }
+
+    .card-duration {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+      margin-bottom: 0.75rem;
+    }
+
+    /* Sections */
+    section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .section-description {
+      color: var(--muted-foreground);
+      max-width: 32rem;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+
+    .section-bg-muted {
+      background-color: var(--muted);
+    }
+
+    /* Features */
+    .feature {
+      display: flex;
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-icon {
+      margin-right: 1rem;
+      margin-top: 0.25rem;
+      color: var(--secondary);
+    }
+
+    .feature-content h3 {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-content p {
+      color: var(--muted-foreground);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--muted);
+      padding: 3rem 0;
+    }
+
+    .dark footer {
+      background-color: #111;
+    }
+
+    .footer-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .footer-description {
+      color: var(--muted-foreground);
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-link {
+      color: var(--muted-foreground);
+      transition: color 0.3s;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .footer-link:hover {
+      color: var(--primary-foreground);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .footer-social a {
+      color: var(--muted-foreground);
+      transition: color 0.3s;
+    }
+
+    .footer-social a:hover {
+      color: var(--primary-foreground);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+      padding-top: 2rem;
+      text-align: center;
+      color: var(--muted-foreground);
+    }
+
+    /* Tabs */
+    .tabs {
+      margin-bottom: 2rem;
+    }
+
+    .tab-list {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .tab {
+      padding: 0.75rem 1.5rem;
+      font-weight: 500;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s;
+    }
+
+    .tab.active {
+      color: var(--primary-foreground);
+      border-bottom-color: var(--primary);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Form */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--input);
+      border-radius: var(--radius);
+      background-color: var(--background);
+      color: var(--foreground);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--ring);
+      box-shadow: 0 0 0 2px rgba(252, 231, 236, 0.3);
+    }
+
+    .form-textarea {
+      min-height: 8rem;
+      resize: vertical;
+    }
+
+    /* Booking Button */
+    .booking-button {
+      position: fixed;
+      right: -2px;
+      top: 25%;
+      z-index: 20000;
+    }
+
+    /* VA Floating Button */
+    .va-button {
+      position: fixed;
+      top: 6rem;
+      right: 1.5rem;
+      z-index: 40;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.3s;
+    }
+
+    .va-button-inner {
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 9999px;
+      background-color: white;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: box-shadow 0.3s;
+    }
+
+    .dark .va-button-inner {
+      background-color: #1f1f1f;
+    }
+
+    .va-button-inner:hover {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .va-button-circle {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 9999px;
+      background-color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+
+    .va-button-text {
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      text-align: center;
+      font-weight: 500;
+      color: var(--muted-foreground);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .animate-slide-in {
+      animation: slideIn 0.8s ease-in-out;
+    }
+
+    /* Hover effects */
+    .hover-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .hover-glow {
+      transition: box-shadow 0.3s ease;
+    }
+
+    .hover-glow:hover {
+      box-shadow: 0 0 15px rgba(255, 182, 193, 0.5);
+    }
+
+    /* Icons */
+    .icon {
+      display: inline-block;
+      width: 1.5rem;
+      height: 1.5rem;
+      stroke-width: 0;
+      stroke: currentColor;
+      fill: currentColor;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.25rem;
+      }
+
+      .hero-description {
+        font-size: 1rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu-toggle {
+        display: block;
+      }
+
+      .mobile-menu.active {
+        display: block;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card-image {
+        height: 12rem;
+      }
+
+      .va-button {
+        top: 4.5rem;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .grid-4 {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* Page specific styles */
+    .page {
+      display: none;
+      padding-top: 6rem;
+      padding-bottom: 5rem;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* Theme toggle */
+    .theme-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--foreground);
+      position: relative;
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .theme-toggle .sun,
+    .theme-toggle .moon {
+      position: absolute;
+      top: 0.35rem;
+      left: 0.35rem;
+      transition: all 0.3s;
+    }
+
+    .theme-toggle .moon {
+      opacity: 0;
+      transform: rotate(90deg) scale(0);
+    }
+
+    .dark .theme-toggle .sun {
+      opacity: 0;
+      transform: rotate(-90deg) scale(0);
+    }
+
+    .dark .theme-toggle .moon {
+      opacity: 1;
+      transform: rotate(0) scale(1);
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="container">
+      <div class="flex justify-between items-center">
+        <a href="#home" class="logo" data-page="home">
+          Viviana's <span>Nail Glam</span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="nav-links">
+          <a href="#home" class="nav-link active" data-page="home">Home</a>
+          <a href="#services" class="nav-link" data-page="services">Services & Gallery</a>
+          <a href="#prices" class="nav-link" data-page="prices">Prices</a>
+          <a href="#about" class="nav-link" data-page="about">About Us</a>
+          <a href="#contact" class="nav-link" data-page="contact">Contact</a>
+          <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            Book Now
+          </a>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon sun">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon moon">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </nav>
+
+        <!-- Mobile Navigation Toggle -->
+        <div class="flex items-center">
+          <button class="theme-toggle" id="mobile-theme-toggle" aria-label="Toggle theme">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon sun">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon moon">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="container">
+        <a href="#home" class="nav-link" data-page="home">Home</a>
+        <a href="#services" class="nav-link" data-page="services">Services & Gallery</a>
+        <a href="#prices" class="nav-link" data-page="prices">Prices</a>
+        <a href="#about" class="nav-link" data-page="about">About Us</a>
+        <a href="#contact" class="nav-link" data-page="contact">Contact</a>
+        <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full" style="margin-top: 1rem;">
+          Book Now
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Home Page -->
+    <div id="home-page" class="page active">
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+          <div class="hero-content hero-gradient">
+            <h1 class="hero-title">
+              Elevate Your <span>Beauty</span>
+            </h1>
+            <p class="hero-description">
+              Experience premium nail care in a luxurious environment at Viviana's Nail Glam.
+            </p>
+            <div class="hero-buttons">
+              <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+                Book an Appointment
+              </a>
+              <a href="#services" class="btn btn-outline btn-lg" data-page="services">
+                Explore Services
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="margin-left: 0.5rem;">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Services -->
+      <section>
+        <div class="container">
+          <h2 class="section-title">Our Premium Services</h2>
+          <p class="section-description">
+            Indulge in our range of luxury nail treatments designed to pamper and perfect.
+          </p>
+
+          <div class="grid grid-3 gap-8">
+            <div class="card hover-lift">
+              <div class="card-image">
+                <img src="https://placehold.co/600x400" alt="Luxury Manicure">
+              </div>
+              <div class="card-content">
+                <div class="flex items-center mb-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon feature-icon">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                  <h3 class="card-title">Luxury Manicure</h3>
+                </div>
+                <p class="card-description">A complete treatment for your hands with premium products and massage.</p>
+                <a href="#services" class="btn btn-outline btn-full" data-page="services">
+                  Learn More
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="margin-left: 0.5rem;">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="card hover-lift">
+              <div class="card-image">
+                <img src="https://placehold.co/600x400" alt="Gel Extensions">
+              </div>
+              <div class="card-content">
+                <div class="flex items-center mb-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon feature-icon">
+                    <circle cx="12" cy="8" r="7"></circle>
+                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                  </svg>
+                  <h3 class="card-title">Gel Extensions</h3>
+                </div>
+                <p class="card-description">Long-lasting, durable extensions with a perfect finish and shine.</p>
+                <a href="#services" class="btn btn-outline btn-full" data-page="services">
+                  Learn More
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="margin-left: 0.5rem;">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="card hover-lift">
+              <div class="card-image">
+                <img src="https://placehold.co/600x400" alt="Nail Art Design">
+              </div>
+              <div class="card-content">
+                <div class="flex items-center mb-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon feature-icon">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                  </svg>
+                  <h3 class="card-title">Nail Art Design</h3>
+                </div>
+                <p class="card-description">Express your style with our custom nail art designs by expert technicians.</p>
+                <a href="#services" class="btn btn-outline btn-full" data-page="services">
+                  Learn More
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="margin-left: 0.5rem;">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center" style="margin-top: 3rem;">
+            <a href="#services" class="btn btn-primary btn-lg" data-page="services">View All Services</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Choose Us -->
+      <section class="section-bg-muted">
+        <div class="container">
+          <div class="grid grid-2 gap-12 items-center">
+            <div>
+              <h2 class="section-title" style="text-align: left;">Why Choose Viviana's Nail Glam?</h2>
+              <div class="space-y-6">
+                <div class="feature">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon feature-icon">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                  <div class="feature-content">
+                    <h3>Premium Products</h3>
+                    <p>We use only the highest quality, non-toxic products for all our services.</p>
+                  </div>
+                </div>
+                <div class="feature">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon feature-icon">
+                    <circle cx="12" cy="8" r="7"></circle>
+                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                  </svg>
+                  <div class="feature-content">
+                    <h3>Expert Technicians</h3>
+                    <p>Our nail artists are certified professionals with years of experience.</p>
+                  </div>
+                </div>
+                <div class="feature">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon feature-icon">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                  </svg>
+                  <div class="feature-content">
+                    <h3>Luxurious Experience</h3>
+                    <p>Enjoy a relaxing atmosphere with personalized attention to detail.</p>
+                  </div>
+                </div>
+                <div class="feature">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon feature-icon">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <div class="feature-content">
+                    <h3>Convenient Booking</h3>
+                    <p>Easy online booking system to schedule your appointments anytime.</p>
+                  </div>
+                </div>
+              </div>
+              <a href="#about" class="btn btn-primary btn-lg" style="margin-top: 2rem;" data-page="about">Learn More About Us</a>
+            </div>
+            <div class="relative" style="height: 500px;">
+              <img src="https://placehold.co/800x1000" alt="Luxury nail salon interior" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section style="background-color: rgba(252, 231, 236, 0.2);">
+        <div class="container text-center">
+          <h2 class="section-title">Ready for Your Glamour Moment?</h2>
+          <p style="font-size: 1.125rem; margin-bottom: 2rem; max-width: 32rem; margin-left: auto; margin-right: auto; color: var(--muted-foreground);">
+            Book your appointment today and experience the luxury nail care you deserve at Viviana's Nail Glam.
+          </p>
+          <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+            Book Your Appointment Now
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <!-- Services Page -->
+    <div id="services-page" class="page">
+      <div class="container">
+        <!-- Page Header -->
+        <div class="text-center" style="margin-bottom: 3rem;">
+          <h1 class="section-title">Our Services & Gallery</h1>
+          <p class="section-description">
+            Explore our range of premium nail services and view our stunning gallery of nail designs.
+          </p>
+        </div>
+
+        <!-- Services Tabs -->
+        <div class="tabs" id="services-tabs">
+          <div class="tab-list">
+            <div class="tab active" data-tab="manicures">Manicures</div>
+            <div class="tab" data-tab="pedicures">Pedicures</div>
+            <div class="tab" data-tab="extensions">Extensions</div>
+          </div>
+
+          <div class="tab-content active" id="manicures-tab">
+            <div class="grid grid-3 gap-8">
+              <div class="card hover-lift">
+                <div class="card-image">
+                  <img src="https://placehold.co/600x400" alt="Classic Manicure">
+                </div>
+                <div class="card-content">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="card-title">Classic Manicure</h3>
+                    <div class="card-price">$35</div>
+                  </div>
+                  <p class="card-duration">Duration: 45 min</p>
+                  <p class="card-description">Nail shaping, cuticle care, hand massage, and polish application.</p>
+                  <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full" style="margin-top: 1rem;">
+                    Book Now
+                  </a>
+                </div>
+              </div>
+
+              <div class="card hover-lift">
+                <div class="card-image">
+                  <img src="https://placehold.co/600x400" alt="Luxury Spa Manicure">
+                </div>
+                <div class="card-content">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="card-title">Luxury Spa Manicure</h3>
+                    <div class="card-price">$50</div>
+                  </div>
+                  <p class="card-duration">Duration: 60 min</p>
+                  <p class="card-description">Classic manicure plus exfoliation, hydrating mask, and extended massage.</p>
+                  <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full" style="margin-top: 1rem;">
+                    Book Now
+                  </a>
+                </div>
+              </div>
+
+              <div class="card hover-lift">
+                <div class="card-image">
+                  <img src="https://placehold.co/600x400" alt="Gel Manicure">
+                </div>
+                <div class="card-content">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="card-title">Gel Manicure</h3>
+                    <div class="card-price">$45</div>
+                  </div>
+                  <p class="card-duration">Duration: 60 min</p>
+                  <p class="card-description">Long-lasting gel polish with nail prep and cuticle care.</p>
+                  <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full" style="margin-top: 1rem;">
+                    Book Now
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content" id="pedicures-tab">
+            <div class="grid grid-3 gap-8">
+              <div class="card hover-lift">
+                <div class="card-image">
+                  <img src="https://placehold.co/600x400" alt="Classic Pedicure">
+                </div>
+                <div class="card-content">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="card-title">Classic Pedicure</h3>
+                    <div class="card-price">$45</div>
+                  </div>
+                  <p class="card-duration">Duration: 60 min</p>
+                  <p class="card-description">Foot soak, nail shaping, cuticle care, callus removal, and polish.</p>
+                  <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full" style="margin-top: 1rem;">
+                    Book Now
+                  </a>
+                </div>
+              </div>
+
+              <div class="card hover-lift">
+                <div class="card-image">
+                  <img src="https://placehold.co/600x400" alt="Luxury Spa Pedicure">
+                </div>
+                <div class="card-content">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="card-title">Luxury Spa Pedicure</h3>
+                    <div class="card-price">$65</div>
+                  </div>
+                  <p class="card-duration">Duration: 75 min</p>
+                  <p class="card-description">Classic pedicure plus exfoliation, hydrating mask, and extended massage.</p>
+                  <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full" style="margin-top: 1rem;">
+                    Book Now
+                  </a>
+                </div>
+              </div>
+
+              <div class="card hover-lift">
+                <div class="card-image">
+                  <img src="https://placehold.co/600x400" alt="Gel Pedicure">
+                </div>
+                <div class="card-content">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="card-title">Gel Pedicure</h3>
+                    <div class="card-price">$55</div>
+                  </div>
+                  <p class="card-duration">Duration: 75 min</p>
+                  <p class="card-description">Long-lasting gel polish with complete foot care.</p>
+                  <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full" style="margin-top: 1rem;">
+                    Book Now
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content" id="extensions-tab">
+            <div class="grid grid-3 gap-8">
+              <div class="card hover-lift">
+                <div class="card-image">
+                  <img src="https://placehold.co/600x400" alt="Acrylic Full Set">
+                </div>
+                <div class="card-content">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="card-title">Acrylic Full Set</h3>
+                    <div class="card-price">$70+</div>
+                  </div>
+                  <p class="card-duration">Duration: 90 min</p>
+                  <p class="card-description">Durable acrylic extensions with your choice of shape and design.</p>
+                  <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full" style="margin-top: 1rem;">
+                    Book Now
+                  </a>
+                </div>
+              </div>
+
+              <div class="card hover-lift">
+                <div class="card-image">
+                  <img src="https://placehold.co/600x400" alt="Gel Extensions">
+                </div>
+                <div class="card-content">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="card-title">Gel Extensions</h3>
+                    <div class="card-price">$80+</div>
+                  </div>
+                  <p class="card-duration">Duration: 90 min</p>
+                  <p class="card-description">Natural-looking gel extensions with strength and flexibility.</p>
+                  <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full" style="margin-top: 1rem;">
+                    Book Now
+                  </a>
+                </div>
+              </div>
+
+              <div class="card hover-lift">
+                <div class="card-image">
+                  <img src="https://placehold.co/600x400" alt="Nail Art & Design">
+                </div>
+                <div class="card-content">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="card-title">Nail Art & Design</h3>
+                    <div class="card-price">$10+</div>
+                  </div>
+                  <p class="card-duration">Duration: Varies</p>
+                  <p class="card-description">Custom nail art, rhinestones, chrome, and specialty designs.</p>
+                  <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full" style="margin-top: 1rem;">
+                    Book Now
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Section -->
+        <div style="margin-top: 5rem; margin-bottom: 5rem;">
+          <div class="text-center" style="margin-bottom: 3rem;">
+            <h2 class="section-title">Our Gallery</h2>
+            <p class="section-description">
+              Browse through our collection of stunning nail designs and get inspired for your next visit.
+            </p>
+          </div>
+
+          <div class="grid grid-4 gap-4">
+            <div class="relative" style="aspect-ratio: 1/1; overflow: hidden; border-radius: var(--radius);">
+              <img src="https://placehold.co/500x500?text=Nail+Design+1" alt="Nail design 1" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+            </div>
+            <div class="relative" style="aspect-ratio: 1/1; overflow: hidden; border-radius: var(--radius);">
+              <img src="https://placehold.co/500x500?text=Nail+Design+2" alt="Nail design 2" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+            </div>
+            <div class="relative" style="aspect-ratio: 1/1; overflow: hidden; border-radius: var(--radius);">
+              <img src="https://placehold.co/500x500?text=Nail+Design+3" alt="Nail design 3" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+            </div>
+            <div class="relative" style="aspect-ratio: 1/1; overflow: hidden; border-radius: var(--radius);">
+              <img src="https://placehold.co/500x500?text=Nail+Design+4" alt="Nail design 4" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+            </div>
+            <div class="relative" style="aspect-ratio: 1/1; overflow: hidden; border-radius: var(--radius);">
+              <img src="https://placehold.co/500x500?text=Nail+Design+5" alt="Nail design 5" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+            </div>
+            <div class="relative" style="aspect-ratio: 1/1; overflow: hidden; border-radius: var(--radius);">
+              <img src="https://placehold.co/500x500?text=Nail+Design+6" alt="Nail design 6" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+            </div>
+            <div class="relative" style="aspect-ratio: 1/1; overflow: hidden; border-radius: var(--radius);">
+              <img src="https://placehold.co/500x500?text=Nail+Design+7" alt="Nail design 7" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+            </div>
+            <div class="relative" style="aspect-ratio: 1/1; overflow: hidden; border-radius: var(--radius);">
+              <img src="https://placehold.co/500x500?text=Nail+Design+8" alt="Nail design 8" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+            </div>
+          </div>
+
+          <div class="text-center" style="margin-top: 2rem;">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style="color: var(--primary-foreground); text-decoration: none; transition: text-decoration 0.3s;">
+              Follow us on Instagram for more inspiration
+            </a>
+          </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div style="background-color: rgba(252, 231, 236, 0.1); border-radius: var(--radius); padding: 2rem 3rem; text-align: center; margin-bottom: 3rem;">
+          <h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">Ready to Book Your Appointment?</h2>
+          <p style="color: var(--muted-foreground); margin-bottom: 1.5rem; max-width: 32rem; margin-left: auto; margin-right: auto;">
+            Experience the luxury nail care you deserve at Viviana's Nail Glam.
+          </p>
+          <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+            Book Your Appointment Now
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prices Page -->
+    <div id="prices-page" class="page">
+      <div class="container">
+        <!-- Page Header -->
+        <div class="text-center" style="margin-bottom: 3rem;">
+          <h1 class="section-title">Our Services & Prices</h1>
+          <p class="section-description">
+            Explore our range of premium nail services with transparent pricing. Quality and luxury for every budget.
+          </p>
+        </div>
+
+        <!-- Quick Navigation -->
+        <div class="flex justify-center" style="flex-wrap: wrap; gap: 0.75rem; margin-bottom: 3rem;">
+          <a href="#manicure-nail-care" class="btn btn-outline" style="border-color: var(--primary);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="margin-right: 0.5rem;">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            Manicure & Nail Care
+          </a>
+          <a href="#refill" class="btn btn-outline" style="border-color: var(--primary);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="margin-right: 0.5rem;">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Refill
+          </a>
+          <a href="#rhinestones-charms" class="btn btn-outline" style="border-color: var(--primary);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="margin-right: 0.5rem;">
+              <polygon points="16 2 20 6 6 20 2 20 2 16 16 2"></polygon>
+            </svg>
+            Rhinestones & Charms
+          </a>
+          <a href="#extras" class="btn btn-outline" style="border-color: var(--primary);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="margin-right: 0.5rem;">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+            </svg>
+            Extras
+          </a>
+        </div>
+
+        <!-- Services List -->
+        <div style="margin-bottom: 4rem;">
+          <!-- Manicure & Nail Care -->
+          <div id="manicure-nail-care" style="scroll-margin-top: 7rem; margin-bottom: 4rem;">
+            <div class="flex items-center" style="margin-bottom: 1.5rem;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon feature-icon">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+              <h2 style="font-size: 1.875rem; font-weight: bold; margin-left: 0.5rem;">Manicure & Nail Care</h2>
+            </div>
+
+            <div class="grid grid-3 gap-6">
+              <div class="card hover-lift">
+                <div class="card-image" style="height: 10rem;">
+                  <img src="https://placehold.co/600x400?text=Manicure" alt="Manicure" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-content">
+                  <div class="flex justify-between items-start" style="margin-bottom: 0.5rem;">
+                    <h3 class="card-title">Manicure</h3>
+                    <div class="card-price">€25</div>
+                  </div>
+                  <div class="flex items-center text-sm" style="color: var(--muted-foreground); margin-bottom: 0.75rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width: 1rem; height: 1rem; margin-right: 0.25rem;">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span>1h 15m</span>
+                  </div>
+                  <p class="card-description">Complete nail care treatment with shaping, cuticle care, and polish application.</p>
+                  <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full" style="margin-top: 1rem;">
+                    Book Now
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Refill -->
+          <div id="refill" style="scroll-margin-top: 7rem; margin-bottom: 4rem;">
+            <div class="flex items-center" style="margin-bottom: 1.5rem;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon feature-icon">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <h2 style="font-size: 1.875rem; font-weight: bold; margin-left: 0.5rem;">Refill</h2>
+            </div>
+
+            <div class="grid grid-3 gap-6">
+              <div class="card hover-lift">
+                <div class="card-image" style="height: 10rem;">
+                  <img src="https://placehold.co/600x400?text=Refill" alt="Refill" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-content">
+                  <div class="flex justify-between items-start" style="margin-bottom: 0.5rem;">
+                    <h3 class="card-title">Refill</h3>
+                    <div class="card-price">€30</div>
+                  </div>
+                  <div class="flex items-center text-sm" style="color: var(--muted-foreground); margin-bottom: 0.75rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width: 1rem; height: 1rem; margin-right: 0.25rem;">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span>1h 15m</span>
+                  </div>
+                  <p class="card-description">Maintenance service to fill the gap between your natural nail and existing extension.</p>
+                  <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full" style="margin-top: 1rem;">
+                    Book Now
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rhinestones & Charms -->
+          <div id="rhinestones-charms" style="scroll-margin-top: 7rem; margin-bottom: 4rem;">
+            <div class="flex items-center" style="margin-bottom: 1.5rem;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon feature-icon">
+                <polygon points="16 2 20 6 6 20 2 20 2 16 16 2"></polygon>
+              </svg>
+              <h2 style="font-size: 1.875rem; font-weight: bold; margin-left: 0.5rem;">Rhinestones & Charms</h2>
+            </div>
+
+            <div class="grid grid-3 gap-6">
+              <div class="card hover-lift">
+                <div class="card-image" style="height: 10rem;">
+                  <img src="https://placehold.co/600x400?text=Small+Rhinestones" alt="Small Rhinestones" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-content">
+                  <div class="flex justify-between items-start" style="margin-bottom: 0.5rem;">
+                    <h3 class="card-title">Small Rhinestones</h3>
+                    <div class="card-price">€0.25</div>
+                  </div>
+                  <div class="flex items-center text-sm" style="color: var(--muted-foreground); margin-bottom: 0.75rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width: 1rem; height: 1rem; margin-right: 0.25rem;">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span>1 min</span>
+                  </div>
+                  <p class="card-description">Delicate rhinestones to add subtle sparkle to your nails.</p>
+                  <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full" style="margin-top: 1rem;">
+                    Book Now
+                  </a>
+                </div>
+              </div>
+
+              <div class="card hover-lift">
+                <div class="card-image" style="height: 10rem;">
+                  <img src="https://placehold.co/600x400?text=Medium+Rhinestones" alt="Medium Rhinestones" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-content">
+                  <div class="flex justify-between items-start" style="margin-bottom: 0.5rem;">
+                    <h3 class="card-title">Medium Rhinestones</h3>
+                    <div class="card-price">€0.50</div>
+                  </div>
+                  <div class="flex items-center text-sm" style="color: var(--muted-foreground); margin-bottom: 0.75rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width: 1rem; height: 1rem; margin-right: 0.25rem;">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span>1 min</span>
+                  </div>
+                  <p class="card-description">Statement rhinestones for a more glamorous nail design.</p>
+                  <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full" style="margin-top: 1rem;">
+                    Book Now
+                  </a>
+                </div>
+              </div>
+
+              <div class="card hover-lift">
+                <div class="card-image" style="height: 10rem;">
+                  <img src="https://placehold.co/600x400?text=Charms" alt="Charms" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-content">
+                  <div class="flex justify-between items-start" style="margin-bottom: 0.5rem;">
+                    <h3 class="card-title">Charms</h3>
+                    <div class="card-price">€1</div>
+                  </div>
+                  <div class="flex items-center text-sm" style="color: var(--muted-foreground); margin-bottom: 0.75rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width: 1rem; height: 1rem; margin-right: 0.25rem;">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span>1 min</span>
+                  </div>
+                  <p class="card-description">Decorative nail charms for a unique and personalized look.</p>
+                  <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full" style="margin-top: 1rem;">
+                    Book Now
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Extras -->
+          <div id="extras" style="scroll-margin-top: 7rem; margin-bottom: 4rem;">
+            <div class="flex items-center" style="margin-bottom: 1.5rem;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon feature-icon">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+              </svg>
+              <h2 style="font-size: 1.875rem; font-weight: bold; margin-left: 0.5rem;">Extras</h2>
+            </div>
+
+            <div class="grid grid-3 gap-6">
+              <div class="card hover-lift">
+                <div class="card-image" style="height: 10rem;">
+                  <img src="https://placehold.co/600x400?text=Nail+Extension+Removal" alt="Nail Extension Removal" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-content">
+                  <div class="flex justify-between items-start" style="margin-bottom: 0.5rem;">
+                    <h3 class="card-title">Nail Extension Removal</h3>
+                    <div class="card-price">€10</div>
+                  </div>
+                  <div class="flex items-center text-sm" style="color: var(--muted-foreground); margin-bottom: 0.75rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width: 1rem; height: 1rem; margin-right: 0.25rem;">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span>20 min</span>
+                  </div>
+                  <p class="card-description">Safe and gentle removal of nail extensions.</p>
+                  <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full" style="margin-top: 1rem;">
+                    Book Now
+                  </a>
+                </div>
+              </div>
+
+              <div class="card hover-lift">
+                <div class="card-image" style="height: 10rem;">
+                  <img src="https://placehold.co/600x400?text=External+Removal" alt="External Nail Extension Removal" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-content">
+                  <div class="flex justify-between items-start" style="margin-bottom: 0.5rem;">
+                    <h3 class="card-title">External Nail Extension Removal</h3>
+                    <div class="card-price">€15</div>
+                  </div>
+                  <div class="flex items-center text-sm" style="color: var(--muted-foreground); margin-bottom: 0.75rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width: 1rem; height: 1rem; margin-right: 0.25rem;">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span>35 min</span>
+                  </div>
+                  <p class="card-description">Removal of nail extensions applied at another salon.</p>
+                  <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full" style="margin-top: 1rem;">
+                    Book Now
+                  </a>
+                </div>
+              </div>
+
+              <div class="card hover-lift">
+                <div class="card-image" style="height: 10rem;">
+                  <img src="https://placehold.co/600x400?text=French+Style" alt="French Style" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-content">
+                  <div class="flex justify-between items-start" style="margin-bottom: 0.5rem;">
+                    <h3 class="card-title">French Style</h3>
+                    <div class="card-price">€5</div>
+                  </div>
+                  <div class="flex items-center text-sm" style="color: var(--muted-foreground); margin-bottom: 0.75rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width: 1rem; height: 1rem; margin-right: 0.25rem;">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span>10 min</span>
+                  </div>
+                  <p class="card-description">Classic French manicure style with white tips.</p>
+                  <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full" style="margin-top: 1rem;">
+                    Book Now
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Price List Table -->
+        <div style="margin-bottom: 4rem;">
+          <h2 class="section-title">Complete Price List</h2>
+
+          <div style="overflow: hidden; border-radius: var(--radius); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
+            <div style="overflow-x: auto;">
+              <table style="width: 100%;">
+                <thead style="background-color: rgba(252, 231, 236, 0.2);">
+                  <tr>
+                    <th style="padding: 1rem 1.5rem; text-align: left; font-weight: bold;">Service</th>
+                    <th style="padding: 1rem 1.5rem; text-align: left; font-weight: bold;">Duration</th>
+                    <th style="padding: 1rem 1.5rem; text-align: left; font-weight: bold;">Price</th>
+                    <th style="padding: 1rem 1.5rem; text-align: right;"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="background-color: var(--card); transition: background-color 0.3s;">
+                    <td style="padding: 1rem 1.5rem;">
+                      <div style="font-weight: 500;">Manicure</div>
+                      <div style="font-size: 0.875rem; color: var(--muted-foreground);">Manicure & Nail Care</div>
+                    </td>
+                    <td style="padding: 1rem 1.5rem; color: var(--muted-foreground);">
+                      <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width: 1rem; height: 1rem; margin-right: 0.5rem;">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        1h 15m
+                      </div>
+                    </td>
+                    <td style="padding: 1rem 1.5rem; font-weight: 500; color: var(--primary-foreground);">€25</td>
+                    <td style="padding: 1rem 1.5rem; text-align: right;">
+                      <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding: 0.25rem 0.75rem; font-size: 0.875rem;">
+                        Book
+                      </a>
+                    </td>
+                  </tr>
+                  <tr style="background-color: var(--card); transition: background-color 0.3s; border-top: 1px solid var(--border);">
+                    <td style="padding: 1rem 1.5rem;">
+                      <div style="font-weight: 500;">Refill</div>
+                      <div style="font-size: 0.875rem; color: var(--muted-foreground);">Refill</div>
+                    </td>
+                    <td style="padding: 1rem 1.5rem; color: var(--muted-foreground);">
+                      <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width: 1rem; height: 1rem; margin-right: 0.5rem;">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        1h 15m
+                      </div>
+                    </td>
+                    <td style="padding: 1rem 1.5rem; font-weight: 500; color: var(--primary-foreground);">€30</td>
+                    <td style="padding: 1rem 1.5rem; text-align: right;">
+                      <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding: 0.25rem 0.75rem; font-size: 0.875rem;">
+                        Book
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div style="background-color: rgba(252, 231, 236, 0.1); border-radius: var(--radius); padding: 2rem 3rem; text-align: center; margin-bottom: 3rem;">
+          <h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">Ready to Experience Luxury Nail Care?</h2>
+          <p style="color: var(--muted-foreground); margin-bottom: 1.5rem; max-width: 32rem; margin-left: auto; margin-right: auto;">
+            Book your appointment today and treat yourself to premium nail services at Viviana's Nail Glam.
+          </p>
+          <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+            Book Your Appointment Now
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="about-page" class="page">
+      <div class="container">
+        <!-- Page Header -->
+        <div class="text-center" style="margin-bottom: 3rem;">
+          <h1 class="section-title">About Viviana's Nail Glam</h1>
+          <p class="section-description">
+            Discover our story, our passion for nail artistry, and our commitment to excellence.
+          </p>
+        </div>
+
+        <!-- About Section -->
+        <div class="grid grid-2 gap-12 items-center" style="margin-bottom: 5rem;">
+          <div class="relative" style="height: 500px;">
+            <img src="https://placehold.co/800x1000?text=Viviana" alt="Viviana, founder of Viviana's Nail Glam" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);">
+          </div>
+          <div>
+            <h2 style="font-size: 1.875rem; font-weight: bold; margin-bottom: 1.5rem;">Our Story</h2>
+            <p style="color: var(--muted-foreground); margin-bottom: 1rem;">
+              Founded by Viviana, a passionate nail artist with over 10 years of experience, Viviana's Nail Glam
+              was born from a desire to create a premium nail care experience that combines luxury, artistry, and
+              personalized service.
+            </p>
+            <p style="color: var(--muted-foreground); margin-bottom: 1rem;">
+              What started as a small passion project has grown into a beloved salon known for its attention to detail,
+              use of premium products, and commitment to creating a relaxing and indulgent experience for every client.
+            </p>
+            <p style="color: var(--muted-foreground); margin-bottom: 1.5rem;">
+              At Viviana's Nail Glam, we believe that nail care is not just about beauty—it's about self-care,
+              expression, and confidence. Our mission is to help every client feel pampered, beautiful, and confident
+              from the moment they walk through our doors.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+              <div style="display: flex; align-items: center; background-color: var(--muted); padding: 0.5rem 1rem; border-radius: 9999px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width: 1rem; height: 1rem; color: var(--primary-foreground); margin-right: 0.5rem;">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <span style="font-size: 0.875rem; font-weight: 500;">Certified Professionals</span>
+              </div>
+              <div style="display: flex; align-items: center; background-color: var(--muted); padding: 0.5rem 1rem; border-radius: 9999px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width: 1rem; height: 1rem; color: var(--primary-foreground); margin-right: 0.5rem;">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <span style="font-size: 0.875rem; font-weight: 500;">Premium Products</span>
+              </div>
+              <div style="display: flex; align-items: center; background-color: var(--muted); padding: 0.5rem 1rem; border-radius: 9999px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width: 1rem; height: 1rem; color: var(--primary-foreground); margin-right: 0.5rem;">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <span style="font-size: 0.875rem; font-weight: 500;">Hygienic Practices</span>
+              </div>
+              <div style="display: flex; align-items: center; background-color: var(--muted); padding: 0.5rem 1rem; border-radius: 9999px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width: 1rem; height: 1rem; color: var(--primary-foreground); margin-right: 0.5rem;">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <span style="font-size: 0.875rem; font-weight: 500;">Personalized Service</span>
+              </div>
+            </div>
+            <a href="#contact" class="btn btn-primary" data-page="contact">Contact Us</a>
+          </div>
+        </div>
+
+        <!-- Our Team -->
+        <div style="margin-bottom: 5rem;">
+          <div class="text-center" style="margin-bottom: 3rem;">
+            <h2 class="section-title">Meet Our Team</h2>
+            <p class="section-description">
+              Our team of certified nail technicians is passionate about creating beautiful nails and providing
+              exceptional service.
+            </p>
+          </div>
+
+          <div class="grid grid-3 gap-8">
+            <div class="card hover-lift">
+              <div class="card-image" style="height: 16rem;">
+                <img src="https://placehold.co/500x500?text=Viviana" alt="Viviana" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              <div class="card-content">
+                <h3 class="card-title">Viviana</h3>
+                <p style="color: var(--primary-foreground); font-weight: 500; margin-bottom: 0.75rem;">Founder & Lead Nail Artist</p>
+                <p class="card-description">With over 10 years of experience, Viviana specializes in intricate nail art and gel extensions.</p>
+              </div>
+            </div>
+
+            <div class="card hover-lift">
+              <div class="card-image" style="height: 16rem;">
+                <img src="https://placehold.co/500x500?text=Isabella" alt="Isabella" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              <div class="card-content">
+                <h3 class="card-title">Isabella</h3>
+                <p style="color: var(--primary-foreground); font-weight: 500; margin-bottom: 0.75rem;">Senior Nail Technician</p>
+                <p class="card-description">Isabella is known for her precision in acrylics and her creative approach to nail design.</p>
+              </div>
+            </div>
+
+            <div class="card hover-lift">
+              <div class="card-image" style="height: 16rem;">
+                <img src="https://placehold.co/500x500?text=Sofia" alt="Sofia" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              <div class="card-content">
+                <h3 class="card-title">Sofia</h3>
+                <p style="color: var(--primary-foreground); font-weight: 500; margin-bottom: 0.75rem;">Nail Artist & Pedicure Specialist</p>
+                <p class="card-description">Sofia brings 5 years of experience and specializes in luxury pedicures and hand-painted nail art.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div style="background-color: rgba(252, 231, 236, 0.1); border-radius: var(--radius); padding: 2rem 3rem; text-align: center; margin-bottom: 3rem;">  231, 236, 0.1); border-radius: var(--radius); padding: 2rem 3rem; text-align: center; margin-bottom: 3rem;">
+          <h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">Experience the Difference</h2>
+          <p style="color: var(--muted-foreground); margin-bottom: 1.5rem; max-width: 32rem; margin-left: auto; margin-right: auto;">
+            Join our community of satisfied clients and experience the luxury nail care you deserve at Viviana's Nail Glam.
+          </p>
+          <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+            Book Your Appointment Now
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact-page" class="page">
+      <div class="container">
+        <!-- Page Header -->
+        <div class="text-center" style="margin-bottom: 3rem;">
+          <h1 class="section-title">Contact Us</h1>
+          <p class="section-description">
+            We'd love to hear from you! Reach out with any questions or to schedule an appointment.
+          </p>
+        </div>
+
+        <div class="grid grid-2 gap-12" style="margin-bottom: 5rem;">
+          <!-- Contact Form -->
+          <div class="card" style="border: none; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);">
+            <div class="card-content" style="padding: 1.5rem 2rem;">
+              <h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1.5rem;">Send Us a Message</h2>
+
+              <div id="form-success" class="hidden" style="background-color: rgba(0, 200, 83, 0.1); color: rgb(0, 150, 60); padding: 1rem; border-radius: var(--radius); margin-bottom: 1.5rem; display: flex; align-items: center;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width: 1.25rem; height: 1.25rem; margin-right: 0.5rem;">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+                <p>Thank you for your message! We'll get back to you soon.</p>
+              </div>
+
+              <form id="contact-form" class="space-y-4">
+                <div class="form-group">
+                  <label for="name" class="form-label">Your Name</label>
+                  <input type="text" id="name" name="name" class="form-input" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="email" class="form-label">Email Address</label>
+                  <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="phone" class="form-label">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" class="form-input" placeholder="Enter your phone number">
+                </div>
+
+                <div class="form-group">
+                  <label for="message" class="form-label">Your Message</label>
+                  <textarea id="message" name="message" class="form-input form-textarea" placeholder="How can we help you?" rows="5" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full" id="submit-button">
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Contact Information -->
+          <div class="space-y-8">
+            <div>
+              <h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1.5rem;">Contact Information</h2>
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width: 1.25rem; height: 1.25rem; color: var(--primary-foreground); margin-right: 0.75rem; margin-top: 0.25rem;">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  <div>
+                    <h3 style="font-weight: 600; margin-bottom: 0.25rem;">Address</h3>
+                    <p style="color: var(--muted-foreground);">Houtrijkstraat 340 a, 1013 WV Amsterdam</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width: 1.25rem; height: 1.25rem; color: var(--primary-foreground); margin-right: 0.75rem; margin-top: 0.25rem;">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                  <div>
+                    <h3 style="font-weight: 600; margin-bottom: 0.25rem;">Email</h3>
+                    <a href="mailto:vivianasnailglam@gmail.com" style="color: var(--muted-foreground); transition: color 0.3s;">
+                      vivianasnailglam@gmail.com
+                    </a>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width: 1.25rem; height: 1.25rem; color: var(--primary-foreground); margin-right: 0.75rem; margin-top: 0.25rem;">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                  <div>
+                    <h3 style="font-weight: 600; margin-bottom: 0.25rem;">Phone</h3>
+                    <p style="color: var(--muted-foreground);">06 57160395</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width: 1.25rem; height: 1.25rem; color: var(--primary-foreground); margin-right: 0.75rem; margin-top: 0.25rem;">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <div>
+                    <h3 style="font-weight: 600; margin-bottom: 0.25rem;">Business Hours</h3>
+                    <div style="color: var(--muted-foreground);">
+                      <p>Monday - Friday: 9:00 AM - 7:00 PM</p>
+                      <p>Saturday: 9:00 AM - 6:00 PM</p>
+                      <p>Sunday: Closed</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1.5rem;">Follow Us</h2>
+              <div class="flex flex-col space-y-4">
+                <a href="https://www.instagram.com/vivianasnailglam/" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; color: var(--muted-foreground); transition: color 0.3s;">
+                  <div style="background-color: var(--muted); border-radius: 9999px; padding: 0.5rem; margin-right: 0.75rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width: 1.25rem; height: 1.25rem;">
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                  </div>
+                  <span>@vivianasnailglam</span>
+                </a>
+                <a href="https://www.tiktok.com/@vivianasnailglam_" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; color: var(--muted-foreground); transition: color 0.3s;">
+                  <div style="background-color: var(--muted); border-radius: 9999px; padding: 0.5rem; margin-right: 0.75rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width: 1.25rem; height: 1.25rem;">
+                      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+                    </svg>
+                  </div>
+                  <span>@vivianasnailglam_</span>
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1.5rem;">Book an Appointment</h2>
+              <p style="color: var(--muted-foreground); margin-bottom: 1rem;">
+                Ready to schedule your visit? Book an appointment online or contact us directly.
+              </p>
+              <a href="https://vivianasnailglam.setmore.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full">
+                Book Online
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map Section -->
+        <div style="margin-bottom: 5rem;">
+          <h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1.5rem; text-align: center;">Find Us</h2>
+          <div style="position: relative; height: 400px; border-radius: var(--radius); overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);">
+            <div style="position: absolute; inset: 0; background-color: var(--muted); display: flex; align-items: center; justify-content: center;">
+              <p style="color: var(--muted-foreground);">Google Maps will be embedded here with the salon location</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Instagram Feed -->
+        <div style="margin-bottom: 5rem;">
+          <div class="text-center" style="margin-bottom: 3rem;">
+            <h2 class="section-title">Follow Us on Instagram</h2>
+            <p class="section-description">
+              Stay updated with our latest nail designs and salon updates.
+            </p>
+          </div>
+
+          <div class="grid grid-4 gap-4">
+            <div style="position: relative; aspect-ratio: 1/1; overflow: hidden; border-radius: var(--radius);">
+              <img src="https://placehold.co/300x300?text=Instagram+1" alt="Instagram post 1" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+            </div>
+            <div style="position: relative; aspect-ratio: 1/1; overflow: hidden; border-radius: var(--radius);">
+              <img src="https://placehold.co/300x300?text=Instagram+2" alt="Instagram post 2" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+            </div>
+            <div style="position: relative; aspect-ratio: 1/1; overflow: hidden; border-radius: var(--radius);">
+              <img src="https://placehold.co/300x300?text=Instagram+3" alt="Instagram post 3" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+            </div>
+            <div style="position: relative; aspect-ratio: 1/1; overflow: hidden; border-radius: var(--radius);">
+              <img src="https://placehold.co/300x300?text=Instagram+4" alt="Instagram post 4" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+            </div>
+            <div style="position: relative; aspect-ratio: 1/1; overflow: hidden; border-radius: var(--radius);">
+              <img src="https://placehold.co/300x300?text=Instagram+5" alt="Instagram post 5" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+            </div>
+            <div style="position: relative; aspect-ratio: 1/1; overflow: hidden; border-radius: var(--radius);">
+              <img src="https://placehold.co/300x300?text=Instagram+6" alt="Instagram post 6" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+            </div>
+            <div style="position: relative; aspect-ratio: 1/1; overflow: hidden; border-radius: var(--radius);">
+              <img src="https://placehold.co/300x300?text=Instagram+7" alt="Instagram post 7" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+            </div>
+            <div style="position: relative; aspect-ratio: 1/1; overflow: hidden; border-radius: var(--radius);">
+              <img src="https://placehold.co/300x300?text=Instagram+8" alt="Instagram post 8" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+            </div>
+          </div>
+
+          <div class="text-center" style="margin-top: 2rem;">
+            <a href="https://www.instagram.com/vivianasnailglam/" target="_blank" rel="noopener noreferrer" style="color: var(--primary-foreground); text-decoration: none; transition: text-decoration 0.3s;">
+              @vivianasnailglam
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="grid grid-4 gap-8">
+        <div>
+          <h3 class="footer-title">Viviana's Nail Glam</h3>
+          <p class="footer-description">
+            Premium nail care services in a luxurious and relaxing environment.
+          </p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/vivianasnailglam/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              <span class="sr-only">Instagram</span>
+            </a>
+            <a href="https://www.tiktok.com/@vivianasnailglam_" target="_blank" rel="noopener noreferrer" aria-label="Follow us on TikTok">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+              </svg>
+              <span class="sr-only">TikTok</span>
+            </a>
+            <a href="mailto:vivianasnailglam@gmail.com" aria-label="Email us">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span class="sr-only">Email</span>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="footer-title">Quick Links</h3>
+          <ul class="footer-links">
+            <li>
+              <a href="#home" class="footer-link" data-page="home">Home</a>
+            </li>
+            <li>
+              <a href="#services" class="footer-link" data-page="services">Services & Gallery</a>
+            </li>
+            <li>
+              <a href="#prices" class="footer-link" data-page="prices">Prices</a>
+            </li>
+            <li>
+              <a href="#about" class="footer-link" data-page="about">About Us</a>
+            </li>
+            <li>
+              <a href="#contact" class="footer-link" data-page="contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-title">Contact Us</h3>
+          <ul class="footer-links">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="margin-right: 0.5rem; margin-top: 0.125rem; flex-shrink: 0;">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span class="footer-description">Houtrijkstraat 340 a, 1013 WV Amsterdam</span>
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="margin-right: 0.5rem;">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <span class="footer-description">06 57160395</span>
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="margin-right: 0.5rem;">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <a href="mailto:vivianasnailglam@gmail.com" class="footer-link">
+                vivianasnailglam@gmail.com
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-title">Partners</h3>
+          <ul class="footer-links">
+            <li>
+              <a href="https://vanappiah.com" target="_blank" rel="noopener noreferrer" class="footer-link flex items-center">
+                <span style="font-weight: 500;">VA - Van Appiah</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://raflelargent.com" target="_blank" rel="noopener noreferrer" class="footer-link flex items-center">
+                <span style="font-weight: 500;">RF - Rafle L'argent</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year"></span> Viviana's Nail Glam. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">
+          <a href="https://vanappiah.com" target="_blank" rel="noopener noreferrer" class="hover:text-primary-foreground transition-colors">
+            Powered by Van Appiah
+          </a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Booking Button -->
+  <a
+    style="float: none; position: fixed; right: -2px; top: 25%; display: block; z-index: 20000;"
+    id="Setmore_button_iframe"
+    href="https://vivianasnailglam.setmore.com/"
+    class="booking-button"
+  >
+    <img
+      border="none"
+      src="https://storage.googleapis.com/full-assets/setmore/images/1.0/Calendar/Setmore-Book-Now.png"
+      alt="Book an appointment with Viviana using Setmore"
+    />
+  </a>
+
+  <!-- VA Floating Button -->
+  <a
+    href="https://vanappiah.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="va-button"
+    aria-label="Powered by Van Appiah - Viviana's Nail Glam 06 57160395"
+  >
+    <div class="va-button-inner">
+      <div class="va-button-circle">VA</div>
+    </div>
+    <span class="va-button-text">
+      Powered by<br />Van Appiah
+    </span>
+  </a>
+
+  <script>
+    // Set current year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+    const html = document.documentElement;
+    
+    // Check for saved theme preference or use system preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      html.classList.add('dark');
+    }
+
+    function toggleTheme() {
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    }
+
+    themeToggle.addEventListener('click', toggleTheme);
+    mobileThemeToggle.addEventListener('click', toggleTheme);
+
+    // Mobile menu toggle
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+    });
+
+    // Header scroll effect
+    const header = document.getElementById('header');
+    
+    function handleScroll() {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+
+    // Page navigation
+    const pages = {
+      'home': document.getElementById('home-page'),
+      'services': document.getElementById('services-page'),
+      'prices': document.getElementById('prices-page'),
+      'about': document.getElementById('about-page'),
+      'contact': document.getElementById('contact-page')
+    };
+
+    function navigateToPage(pageId) {
+      // Hide all pages
+      Object.values(pages).forEach(page => {
+        page.classList.remove('active');
+      });
+      
+      // Show selected page
+      pages[pageId].classList.add('active');
+      
+      // Update active nav link
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+      
+      document.querySelectorAll(`.nav-link[data-page="${pageId}"]`).forEach(link => {
+        link.classList.add('active');
+      });
+      
+      // Close mobile menu if open
+      mobileMenu.classList.remove('active');
+      
+      // Scroll to top
+      window.scrollTo(0, 0);
+      
+      // Update URL hash
+      window.location.hash = pageId;
+    }
+
+    // Add click event listeners to all navigation links
+    document.querySelectorAll('[data-page]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const pageId = link.getAttribute('data-page');
+        navigateToPage(pageId);
+      });
+    });
+
+    // Handle initial page load based on URL hash
+    function handleInitialPage() {
+      const hash = window.location.hash.substring(1);
+      if (hash && pages[hash]) {
+        navigateToPage(hash);
+      }
+    }
+
+    window.addEventListener('load', handleInitialPage);
+    window.addEventListener('hashchange', handleInitialPage);
+
+    // Services tabs
+    const tabs = document.querySelectorAll('.tab');
+    
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const tabId = tab.getAttribute('data-tab');
+        
+        // Update active tab
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        
+        // Update active content
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.classList.remove('active');
+        });
+        
+        document.getElementById(`${tabId}-tab`).classList.add('active');
+      });
+    });
+
+    // Contact form handling
+    const contactForm = document.getElementById('contact-form');
+    const submitButton = document.getElementById('submit-button');
+    const formSuccess = document.getElementById('form-success');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Disable button and show loading state
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+      
+      // Simulate form submission (in a real site, this would be an actual API call)
+      setTimeout(() => {
+        // Reset form
+        contactForm.reset();
+        
+        // Show success message
+        formSuccess.classList.remove('hidden');
+        
+        // Reset button
+        submitButton.disabled = false;
+        submitButton.textContent = 'Send Message';
+        
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          formSuccess.classList.add('hidden');
+        }, 5000);
+      }, 1500);
+    });
+
+    // Image hover effects
+    document.querySelectorAll('.card-image img, [style*="aspect-ratio: 1/1"] img').forEach(img => {
+      img.addEventListener('mouseenter', () => {
+        img.style.transform = 'scale(1.05)';
+      });
+      
+      img.addEventListener('mouseleave', () => {
+        img.style.transform = 'scale(1)';
+      });
+    });
+
+    // Initialize any components that need it on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set Setmore script
+      const setmoreScript = document.createElement('script');
+      setmoreScript.src = 'https://assets.setmore.com/integration/static/setmoreIframeLive.js';
+      document.head.appendChild(setmoreScript);
+    });
+  </script>
+</body>
+</html>
